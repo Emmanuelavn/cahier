@@ -76,9 +76,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '/opt/lampp/htdocs/EZEETEST/DATA/module/vendor/phpmailer/phpmailer/src/Exception.php';
-require '/opt/lampp/htdocs/EZEETEST/DATA/module/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '/opt/lampp/htdocs/EZEETEST/DATA/module/vendor/phpmailer/phpmailer/src/SMTP.php';
+require 'DATA/module/vendor/phpmailer/phpmailer/src/Exception.php';
+require 'DATA/module/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require 'DATA/module/vendor/phpmailer/phpmailer/src/SMTP.php';
 
 //Load Composer's autoloader
 require 'DATA/module/vendor/autoload.php';
@@ -91,20 +91,19 @@ if (isset($_POST["ok"])) {
     $matricule = $_POST['matricule'];
     $filliere = $_POST['filliere'];
     $email = $_POST['email'];
-    $password = $_POST['passwd'];
+    $passwd = $_POST['passwd'];
     $confirm = $_POST['confpasswd'];  // Obtient la date et l'heure actuelles au format DATETIME
     $date_inscription = date("Y-m-d H:i:s"); 
     
     $filieres = array("ia", "gl", "si", "im", "seiot");// Tableau des filières disponibles (en minuscules)
-    
-    // Convertir en minuscules (ou majuscules) pour la comparaison
-    $filiere_indiquee = strtolower($filiere); // Convertir en minuscules
-   
+
+    $filliere = strtolower($filliere); //mettre la filliere en miniscule 
+
     // Vérification si la filière indiquée est valide
     if (in_array($filliere, $filieres)) {
         echo '<script>console.log("la filliere entre est valide")</script>';
         // Vérifiez que le mot de passe correspond à la confirmation
-        if ($password == $confirm) {
+        if ($passwd == $confirm) {
             // Vérifiez que les variables ne sont pas vides et que Matricule est alphanumérique
             if (!empty($nom_user) && !empty($matricule) && ctype_alnum($matricule)) {
                 
@@ -116,10 +115,10 @@ if (isset($_POST["ok"])) {
                 $matricule = mysqli_real_escape_string($conn, $matricule);
                 $email = mysqli_real_escape_string($conn, $email);
                 $filliere = mysqli_real_escape_string($conn, $filliere);
-                $password = mysqli_real_escape_string($conn, $password);
+                $passwd = mysqli_real_escape_string($conn, $passwd);
 
                 // Créez et exécutez la requête SQL pour insérer les données dans la table utilisateur
-                $sql = "INSERT INTO USERS (nom_user,matricule,filliere,email,passwd,date_inscription) VALUES ('$nom_user', '$matricule','$filliere', '$email', '$password','$date_inscription')";
+                $sql = "INSERT INTO USERS (nom_user,matricule,filliere,email,passwd,date_inscription) VALUES ('$nom_user', '$matricule','$filliere', '$email', '$passwd','$date_inscription')";
                 echo '<script>alert("Information valide ! Confirmer votre email")</script>';
                 if (mysqli_query($conn, $sql)) {
 

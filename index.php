@@ -52,8 +52,7 @@
                     <br>
                     <input class="champ_saisie" type="text" name="nom_user" placeholder="nom d'utllisateur" required>
                     <input class="champ_saisie" type="number" name="matricule" placeholder="numéro matricule">
-                    <input class="champ_saisie" type="text" name="filliere"
-                        placeholder="votre filliere IA/GL/SI/SeIOT/">
+                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/">
                     <input class="champ_saisie" type="email" name="email" placeholder="Email" required>
                     <input class="champ_saisie" type="password" name="passwd" placeholder="mots de passe" required>
                     <input class="champ_saisie" type="password" name="confpasswd"
@@ -68,7 +67,7 @@
 
         <div class="container-rigth">
             <div class="form-container">
-                <form action="#" method="post">
+                <form action="traitement_conn.php" method="post">
                     <h1>
                         <span>Connexion</span>
                     </h1>
