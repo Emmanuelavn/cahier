@@ -1,0 +1,15 @@
+@keyframes animation_title {
+    0% {
+        transform-origin: inherit;
+    }
+
+    100% {
+        transform: initial;
+    }
+}
+:root {
+    --couleur-principale:#4169e1;
+    --couleur-texte: #222;
+    --couleur-form:#f0f8ff;
+    --couleur-blanche:#ffffff;
+}

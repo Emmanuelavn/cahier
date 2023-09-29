@@ -1,0 +1,139 @@
+:root {
+    --font-Title: 'Roboto', sans-serif;
+    --font-link: 'Poppins Medium', sans-serif;
+    --size-nav-Title: 50px;
+    --size-nav-link: 19px;
+    --size-Title-header: 100px;
+    --main-color: #0f3054;
+    --second-color: #89939E;
+    --third-color: #000000;
+    --background-color: #FFFFFF;
+    --text-color: #222;
+    --form-color: #f0f8ff;
+    --whrite-color: #ffffff;
+    --size-btn:16px;
+}
+*{
+    list-style: none;   
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+nav {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    height: 70px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+nav h1 img {
+    height: 45px;
+    padding: 0%;
+}
+
+nav h1:hover {
+    cursor: pointer;
+}
+
+nav h1 span {
+    position: relative;
+    color: #fafafb;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+nav ul {
+    margin: 0% 0%;
+    padding: 0%;
+    font-family: var(--font-link);
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+nav ul li {
+    padding-right: 10px;
+    overflow: hidden;
+    list-style: none;
+}
+nav span {
+    position: absolute;
+}
+
+nav ul li a {
+    color: var(--couleur-blanche);
+    font-size: 15px;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 10px;
+}
+
+nav ul a:hover {
+    color: var(--main-color);
+}
+
+.menu-burgeur {
+    display: none;
+    top: 0px;
+    left: 0px;
+    height: 42px;
+    width: 42px;
+    margin: 0% 5%;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-burgeur span:nth-child(2) {
+    position: absolute;
+    display: block;
+    width: 60%;
+    height: 4px;
+    top: 46%;
+    background-color: var(--main-color);
+    position: absolute;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.menu-burgeur span:nth-child(1), .menu-burgeur span:nth-child(3) {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    transition: transform 0.5s ease-in-out;
+}
+
+.menu-burgeur span:nth-child(1) {
+    bottom: 19px;
+    transform: translateY(10px);
+}
+
+.menu-burgeur span:nth-child(3) {
+    top: 19px;
+    transform: translateY(-10px);
+}
+
+.menu-burgeur.menu_active span:nth-child(2) {
+    background-color: transparent;
+}
+
+.menu-burgeur.menu_active span:nth-child(1) {
+    transform: translateY(0px) rotateZ(-45deg);
+}
+
+.menu-burgeur.menu_active span:nth-child(3) {
+    transform: translateY(0px) rotateZ(45deg);
+}
