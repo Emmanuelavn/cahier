@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 29 sep. 2023 à 16:05
+-- Généré le : dim. 01 oct. 2023 à 16:51
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -28,6 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `LICENCE_1` (
+  `semestre` varchar(255) NOT NULL,
+  `filliere` varchar(255) NOT NULL,
   `nom_ue` varchar(255) NOT NULL,
   `nom_ec` varchar(255) NOT NULL,
   `nom_fichier` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'on met ici le nom des cours et des document en fonction des UE et EC',
@@ -37,6 +39,13 @@ CREATE TABLE `LICENCE_1` (
   `chemin_fichier` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `LICENCE_1`
+--
+
+INSERT INTO `LICENCE_1` (`semestre`, `filliere`, `nom_ue`, `nom_ec`, `nom_fichier`, `categorie_fichier`, `description_fichier`, `année_fichier`, `chemin_fichier`) VALUES
+('', '', 'math', 'analyse', 'analyse_originale', 'cours', 'cours de l\'année', '2023-10-01', 'DATA/stat_ifri_uac_22-23_100635.pdf');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +53,7 @@ CREATE TABLE `LICENCE_1` (
 --
 
 CREATE TABLE `LICENCE_2` (
+  `semestre` varchar(255) NOT NULL,
   `filliere` varchar(255) NOT NULL,
   `nom_ue` varchar(255) NOT NULL,
   `nom_ec` varchar(255) NOT NULL,
@@ -61,6 +71,7 @@ CREATE TABLE `LICENCE_2` (
 --
 
 CREATE TABLE `LICENCE_3` (
+  `semestre` varchar(255) NOT NULL,
   `filliere` varchar(255) NOT NULL,
   `nom_ue` varchar(255) NOT NULL,
   `nom_ec` varchar(255) NOT NULL,
@@ -70,6 +81,17 @@ CREATE TABLE `LICENCE_3` (
   `année_fichier` date NOT NULL,
   `chemin_fichier` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `LICENCE_3`
+--
+
+INSERT INTO `LICENCE_3` (`semestre`, `filliere`, `nom_ue`, `nom_ec`, `nom_fichier`, `categorie_fichier`, `description_fichier`, `année_fichier`, `chemin_fichier`) VALUES
+('', 'SI', 'math', 'analyse', 'anly.00', 'cours', 'cours essaie', '2022-10-01', '/opt/lampp/temp/php0ENqTk'),
+('', 'SI', 'math', 'proba', 'anly.00', 'sss', 'qssssssssssssss', '2001-02-10', '/opt/lampp/temp/phpnPIWka'),
+('www', 'www', 'ww', 'wwww', 'www', 'wwwww', 'wwwwww', '2023-10-11', 'https://drive.google.com/file/d/1h86NdogdJWmMJQTUhL21_7gORf6J7YpWJcX9dBWmcQE/view'),
+('semestre 1', 'SI', 'math', 'proba', 'll', 'lll', 'cours essaie2', '2005-03-12', '/opt/lampp/temp/phpGy55H6'),
+('n', 'n', 'n', 'n', 'n', 'n', 'n', '2023-10-04', 'https://drive.google.com/file/d/1dag3QfbDASrzCgpGdAEH2JD17ek6qRBk/view?usp=drive_link');
 
 -- --------------------------------------------------------
 
@@ -92,43 +114,8 @@ CREATE TABLE `USERS` (
 --
 
 INSERT INTO `USERS` (`id_user`, `nom_user`, `matricule`, `filliere`, `email`, `passwd`, `date_inscription`) VALUES
-(24, 'sondre405', 500629, 'SEiot', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(25, 'sondre405', 500629, 'SEiot', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(26, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(27, 'AVANNA Benito', 111111, 'SI', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(28, 'AVANNA Benito', 111111, 'SI', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(29, 'AVANNA Benito', 111111, 'SI', 'sondre405@yemenfo.com', '', '0000-00-00'),
-(30, 'AVANNA Benito', 111111, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(31, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(32, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(33, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(34, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(35, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(36, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(37, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(38, 'Bryan LEKE', 111111, 'IA', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(39, 'Bryan LEKE', 111111, 'IA', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(40, 'azerty', 0, 'IA', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(41, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(42, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(43, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(44, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(45, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(46, 'Bryan LEKE', 11699023, 'SI', 'bryanleke04@gmail.com', '', '2023-09-29'),
-(47, 'Bryan LEKE', 11699023, 'SI', 'sondre405@yemenfo.com', '', '2023-09-29'),
-(48, 'Bryan LEKE', 11699023, 'SI', 'markee45@lvintager.com', '', '2023-09-29'),
-(49, 'Bryan LEKE', 11699023, 'SI', 'markee45@lvintager.com', '', '2023-09-29'),
-(50, 'Bryan LEKE', 11699023, 'SI', 'markee45@lvintager.com', '', '2023-09-29'),
-(51, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(52, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(53, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(54, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(55, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(56, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(57, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29'),
-(58, 'Bryan LEKE', 11699023, 'SI', 'markee45@lvintager.com', '', '2023-09-29'),
-(59, 'Bryan LEKE', 111111, 'SI', 'markee45@lvintager.com', '', '2023-09-29'),
-(60, 'Bryan LEKE', 11699023, 'IA', 'markee45@lvintager.com', '', '2023-09-29');
+(73, 'Bryan_lk', 11699023, 'ia', 'bryanleke04@gmail.com', 'lk', '2023-09-29'),
+(74, 'Essaie 1', 11258965, 'gl', 'katherinne.5@oresolvedm.com', 'essai', '2023-09-30');
 
 --
 -- Index pour les tables déchargées
@@ -148,7 +135,7 @@ ALTER TABLE `USERS`
 -- AUTO_INCREMENT pour la table `USERS`
 --
 ALTER TABLE `USERS`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
