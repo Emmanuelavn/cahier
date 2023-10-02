@@ -57,22 +57,23 @@
                 <p class="profil_name">AGOSSOU Jean</p>
             </div>
 
-            <select>
-                <option value="Licence">Licence 1</option>
-                <option value="Licence">Licence 2</option>
-                <option value="Licence">Licence 3</option>
-            </select>
-            <div class="btn_container">
-                <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
-                        <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
-                    </svg>UE / EC (Cours)</button>
-                <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
-                        <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
-                    </svg>Documents</button>
-                <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
-                        <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
-                    </svg>Epreuves & Corriger</button>
-            </div>
+            <form action="DATA/include/table.php" method="POST" id="categorieForm" class="btn_container">
+                <select name="licence" id="choix_licence">
+                    <option value="LICENCE_1">LICENCE_1</option>
+                    <option value="LICENCE_2">LICENCE_2</option>
+                    <option value="LICENCE_3">LICENCE_3</option>
+
+                    <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
+                            <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
+                        </svg><input class="btn" type="submit" name="categorie" value="cour"></button>
+                    <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
+                            <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
+                        </svg><input class="btn" type="submit" name="categorie" value="document"></button>
+                    <button class="btn"><svg viewBox="0 0 30 30" class="chevron_btn">
+                            <polygon points="17.4,15 7,25.2 9.8,28 23,15 9.8,2 7,4.8"></polygon>
+                        </svg><input class="btn" type="submit" name="categorie" value="epreuve"></button>
+                </select>
+            </form>
             <ul>
                 <li><a href="#" target="_blank">Déconnection</a></li>
                 <li><a href="about.html" target="_blank">à propos</a></li>
@@ -83,17 +84,8 @@
         </div>
     </header>
     <hr>
-    <div class="container">
-        <!-- <select>
-            <option value="appetizer">Bruschetta - $6.99</option>
-            <option value="appetizer">Stuffed Mushrooms - $8.99</option>
-            <option value="main-course">Pasta Carbonara - $12.99</option>
-            <option value="main-course">Grilled Salmon - $16.99</option>
-            <option value="dessert">Tiramisu - $7.99</option>
-            <option value="dessert">Chocolate Fondue - $9.99</option>
-        </select>  -->
-    </div>
-    <script src="../EZEETEST/ASSETS/JS/acceuil.js"></script>
+
+    <script src="ASSETS/JS/acceuil.js"></script>
 </body>
 
 </html>
