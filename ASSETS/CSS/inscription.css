@@ -1,10 +1,10 @@
-
 :root {
-    --font-Title: 'Roboto', sans-serif;
-    --font-link: 'Poppins Medium', sans-serif;
+    --font-body: 'Poppins Medium', sans-serif;
     --size-nav-Title: 50px;
     --size-nav-link: 19px;
     --size-Title: 70px;
+    --nav-height: 70px;
+    --nav-color: #ffffff;
     --main-color: #0f3054;
     --second-color: #89939E;
     --third-color: #000000;
@@ -14,6 +14,7 @@
     --whrite-color: #ffffff;
     --size-text: 30px;
     --text-width: 800px;
+    --champ_saisie_height: 45px;
 }
 
 @keyframes animation_title {
@@ -62,7 +63,7 @@
 }
 
 body {
-    font-family: var(--font-Title);
+    font-family: var(--font-body);
     object-fit: cover;
     list-style: none;
     overflow: hidden;
@@ -70,21 +71,22 @@ body {
     color: var(--whrite-color);
     display: flex;
     justify-content: center;
-
 }
+
 .navbar {
     position: fixed;
-    background-color: var(--whrite-color);
+    background-color: var(--nav-color);
     background: blur(7);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 80px;
+    height: var(--nav-height);
     width: 100vw;
     box-shadow: 0px 0px 20px var(--text-color);
 }
 
 .navbar h1 {
+    cursor: pointer;
     font-family: var(--font-Title);
     font-size: var(--size-navbar-Title);
     text-transform: uppercase;
@@ -94,7 +96,7 @@ body {
 }
 
 .navbar h1:hover {
-    cursor: pointer;
+    opacity: 0.8;
 }
 
 .navbar h1 img {
@@ -111,45 +113,27 @@ body {
     animation: 0.9s animation_title forwards cubic-bezier(1, -0.16, .33, 1.15);
 }
 
-.navbar ul {
-    color: var(--text-color);
-    width:auto;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.navbar ul li {
-    list-style: none;
-    height: auto;
-    border-radius: 20px;
-    padding: 6px 20px;
-    color: var(--background-color);
+.btn_about {
+    border-radius: 16px;
     background-color: var(--main-color);
-}
-
-.navbar ul li a {
+    color: var(--text-width);
+    padding: 10px 20px;
     text-decoration: none;
-    padding-top: 2px;
-    align-items: center;
-    color: var(--background-color);
+    font-weight: bold;
+    font-size: var(--size-nav-link);
+    transition: all 0.4s;
 }
 
-.navbar ul li a:hover {
-    color: var(--background-color);
-    scale: 1;
-    background-color: transparent;
-}
-.navbar ul li span:hover {
-    color: var(--main-color);
+.btn_about:hover {
     scale: 1.1;
-    background-color: rgba(255, 255, 255, 0.09);
+    border: solid var(--main-color);
+    background-color: transparent;
+    color: var(--main-color);
 }
 
 .container {
-    margin-top: 80px;
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -161,7 +145,6 @@ body {
 
 .background img {
     object-fit: cover;
-    size: 1000px;
     width: 100vw;
     height: 100vh;
 }
@@ -181,11 +164,6 @@ body {
     flex-shrink: 0;
 }
 
-
-
-.menu-burgeur {
-    display: none;
-}
 .container-left,
 .container-rigth {
     position: absolute;
@@ -199,34 +177,38 @@ body {
 }
 
 .container-left {
-    transition: opacity 0.5s ease-in-out;
+    left: 0;
     z-index: 1000px !important;
     height: auto;
-    top: 85px;
-    left: 0vw;
     width: 100%;
     display: flex;
+    justify-self: center;
     justify-content: space-around;
     opacity: 0;
+    align-self: center;;
+    margin-top: 0%;
+
 }
 
 .container-left::after {
+    content: "Obtenez les meilleurs résultats avec notre plateforme .Améliorez vos compétences et réussissez vos examens avec Ezeetest.";
     font-family: var(--font-Title);
-    align-items: center;
+    text-align: center;
     height: auto;
-    border-radius: 10px;
+    border: solid 0.1px;
+    border-radius: 20px;
     padding: 10px;
     font-size: var(--size-text);
     max-width: var(--text-width);
-    background-color: #00000050;
+    background-color: var(--main-color);
     background: blur(7);
-    content: "Obtenez les meilleurs résultats avec notre plateforme .Améliorez vos compétences et réussissez vos examens avec Ezeetest."
 }
 
 .container-rigth {
     width: 100%;
-    height: auto;
+    align-self: center;
     justify-self: center;
+    margin-top: 0%;
     margin-right: 10px;
     z-index: 100px !important;
     right: 0;
@@ -237,15 +219,16 @@ body {
 
 .container-rigth::before {
     font-family: var(--font-Title);
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
+    text-align: center;
+    border: solid 0.1px;
+    border-radius: 20px;
+    padding: 10px 20px;
     letter-spacing: 1.5px;
     white-space: 10px;
     height: auto;
     font-size: var(--size-text);
     max-width: var(--text-width);
-    background-color: #00000018;
+    background-color: var(--main-color);
     background: blur(10);
     content: "Accédez à des milliers de cours, exercices et épreuves d'examens passés en un seul clic ! Améliorez vos compétences et réussissez vos examens avec Ezeetest !!.";
 }
@@ -264,17 +247,11 @@ body {
     align-items: center;
 }
 
-.form-container form.active {
-    opacity: 1;
-    display: block;
-}
-
 .form-container h1 {
-    padding: 0%;
+    padding-bottom: 20px;
     overflow: hidden;
     font-family: var(--font-Title);
     font-size: var(--size-Title);
-    padding: 10px;
     overflow: hidden;
 }
 
@@ -288,37 +265,43 @@ body {
 }
 
 .form-container p {
-    padding-top: 10px;
+    border-radius: 20px;
     letter-spacing: 1px;
     font-size: 19px;
-    font-weight: 900;
+    font-weight: bold;
 }
 
 .form-container p button {
+    background-color: #f0f8ff7c;
+    background: blur(7);
+    border-radius: 10px;
     cursor: pointer;
-    padding: 10px;
+    letter-spacing: 1.2px;
+    padding: 5px;
     font-size: 20px;
+    font-weight: bold;
     border: none;
-    background-color: transparent;
-    color: blue;
+    color: rgb(0, 4, 252);
+}
+
+.form-container p button:hover {
+    background-color: #FFFFFF;
 }
 
 .form-container .champ_saisie {
-    margin-top: -1%;
-    margin-bottom: 20px;
-    height: 50px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    height: var(--champ_saisie_height);
     width: 300px;
     border-radius: 20px;
-    font-size: 17px;
+    font-size: var(--size-nav-link);
     padding-left: 50px;
     transform: scale(0);
     animation: 0.4s animation_title forwards cubic-bezier(1, -0.16, .38, 1.1);
-    display: 0.1s;
     border-color: var(--main-color);
 }
 
 .form-container .champ_saisie:hover {
-    cursor: pointer;
     box-shadow: 0px 0px 10px var(--main-color);
 }
 
@@ -332,15 +315,15 @@ body {
     border: var(--main-color);
 }
 
-.form-container .boutton_soumettre{
-    margin-top: 30px;
-    margin-bottom: 0%;
+.form-container .boutton_soumettre {
+    margin-top: 20px;
+    margin-bottom: 10px;
     padding: 0%;
     border-radius: 15px;
     height: 50px;
     width: 150px;
-    font-size: 19px;
-    font-weight: 900;
+    font-size: var(--size-nav-link);
+    font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
     color: var(--whrite-color);
@@ -362,13 +345,15 @@ body {
 
 
 /* responsive */
-@media screen and (max-width:1250px) {
+@media screen and (max-width:1500px) {
+
     :root {
-        --font-Title: 'Roboto', sans-serif;
-        --font-link: 'Poppins Medium', sans-serif;
-        --size-nav-Title: 40px;
+        --font-body: 'Roboto', sans-serif;
+        --size-nav-Title: 50px;
         --size-nav-link: 19px;
         --size-Title: 70px;
+        --nav-height: 70px;
+        --nav-color: #ffffff;
         --main-color: #0f3054;
         --second-color: #89939E;
         --third-color: #000000;
@@ -376,9 +361,9 @@ body {
         --text-color: #222;
         --form-color: #f0f8ff;
         --whrite-color: #ffffff;
-        --size-text: 20px;
-        --text-width: 300px;
-
+        --size-text: 25px;
+        --text-width:500px;
+        --champ_saisie_height: 45px;
     }
 
     body {
@@ -387,21 +372,17 @@ body {
         flex-direction: column;
     }
 
-    .form-container form h1 {
-        margin-top: 70px;
-        font-size: 50px
+    .navbar {
+        height: 50px;
     }
 
-    .form-container form p {
-        margin-left: -4%;
+    .champ_saisie {
+        height: 30px;
     }
 
-    .container-left {
-        top: 10px;
-    }
-
-    .container-rigth {
-        margin-top: 100px;
+    .container {
+        margin-top: 0px;
+        align-items: flex-start;
     }
 }
 
@@ -436,14 +417,18 @@ body {
         height: 100vh;
     }
 
-    .slider_container {
-        width: 100%;
-        height: 100%;
-    }
 
     .navbar ul {
         display: none;
     }
+    .container-left::after {
+        display: none;
+    }
+
+    .container-rigth::before {
+        display: none;
+    }
+
 
 }
 
@@ -466,7 +451,7 @@ body {
 
     }
 
-  
+
 }
 
 
