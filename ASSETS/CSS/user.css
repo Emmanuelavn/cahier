@@ -146,7 +146,7 @@ header{
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 300px;
+    height: 100px;
     background-color: var(--main-color);
 }
 .profile_content{
@@ -184,7 +184,9 @@ header{
 .btn_modif:hover{
     transform: translateY(-2px);
 }
-
+.information_utillisateur{
+    margin-top: 100px;
+}
 .form_container{
     display: none;
 }
