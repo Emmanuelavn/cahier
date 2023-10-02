@@ -267,7 +267,7 @@ body {
 .header h1 {
     text-align: center;
     position: absolute;
-    left:0vw;
+    left:10vw;
     margin-top: 100px;
     padding: 20px;
     border-radius: 20px;

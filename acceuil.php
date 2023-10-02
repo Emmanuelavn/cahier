@@ -2,6 +2,42 @@
 <html lang="Fr">
 
 <head>
+<?php
+// Démarrer la session
+session_start();
+
+// Vérifier si l'utilisateur est authentifié
+if (!isset($_SESSION['email_or_username'])) {
+    // Si l'utilisateur n'est pas authentifié, rediriger vers la page de connexion
+    header("Location: index.php");
+    exit();
+}
+
+// Récupérer les informations de l'utilisateur à partir de la session
+$email_or_username = $_SESSION['email_or_username'];
+
+// Vous pouvez maintenant utiliser $email_or_username pour récupérer les autres informations de l'utilisateur à partir de la base de données
+// Connexion à la base de données
+include "DATA/include/config_BD.php";
+
+// Requête SQL  pour récupérer les informations de l'utilisateur
+$sql = "SELECT * FROM USERS WHERE email='$email_or_username' OR nom_user='$email_or_username'";
+$result = $conn->query($sql);
+
+if ($result->num_rows == 1) {
+    $row = $result->fetch_assoc();
+    $nom_utilisateur = $row['nom_user'];
+    $matricule = $row['matricule'];
+    $filliere = $row['filliere'];
+    $email = $row['email'];
+} else {
+    die("Informations de l'utilisateur non trouvées.");
+}
+
+// Fermer la connexion à la base de données
+$conn->close();
+?>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="ASSETS/CSS/acceuil.css">
@@ -19,8 +55,8 @@
                     srcset=""></span></h1>
         <ul>
             <li><a href="about.html" target="_blank">à propos</a></li>
-            <li><a href="#" target="_blank">Déconnection</a></li>
-            <li><a href="user.html" target="_blank" rel="noopener noreferrer"><button class="btn_setting">&#9881
+            <li><a href="deconnexion.php" target="_blank">Déconnection</a></li>
+            <li><a href="user.php" target="_blank" rel="noopener noreferrer"><button class="btn_setting">&#9881
                         profil</button></a></p>
             </li>
 
@@ -41,7 +77,7 @@
                 <img src="ASSETS/IMG/pexels-pixabay-301920.jpg" alt="" srcset="">
             </div>
         </div>
-        <h1>Bienvenue sur Ezeetest</h1>
+        <h1>Bienvenue <?php echo $nom_utilisateur ;?> sur Ezeetest</h1>
         <div class="profil-setting">
             <div class="icon-bar-lateral">
                 <svg viewBox="0 0 30 30" class="chevron">
@@ -54,7 +90,8 @@
             <div class="profil_info"><a href="ASSETS/IMG/pexels-oladimeji-ajegbile-3118214.jpg" target="_blank"
                     rel="noopener noreferrer"><img class="profil_img"
                         src="ASSETS/IMG/pexels-oladimeji-ajegbile-3118214.jpg" alt="" srcset=""></a>
-                <p class="profil_name">AGOSSOU Jean</p>
+                <p class="profil_name"><?php echo $nom_utilisateur ; ?></p>
+                
             </div>
 
             <form action="DATA/include/table.php" method="POST" id="categorieForm" class="btn_container">
