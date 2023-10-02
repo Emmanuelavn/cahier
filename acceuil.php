@@ -84,7 +84,8 @@
         </div>
     </header>
     <hr>
-
+    <a href="DATA/GPT-3/index.php" target="_blank" rel="noopener noreferrer">IA N°1</a>
+    <a href="DATA/include/API_gtp3.php" target="_blank" rel="noopener noreferrer">IA N°2</a>
     <script src="ASSETS/JS/acceuil.js"></script>
 </body>
 
