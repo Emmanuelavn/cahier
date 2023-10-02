@@ -29,17 +29,8 @@
     </div>
     <!--navbar-->
     <nav class="navbar">
-
-        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt=""
-                    srcset=""></span></h1>
-        <ul>
-            <li><a href="about.html">à propos</a></li>
-        </ul>
-        <div class="menu-burgeur">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt="logo_Ezeetest" srcset=""></span></h1>
+        <a class="btn_about" href="about.html">à propos</a>
     </nav>
     <!--centre de la page-->
     <div class="container">
@@ -52,7 +43,7 @@
                     <br>
                     <input class="champ_saisie" type="text" name="nom_user" placeholder="nom d'utllisateur" required>
                     <input class="champ_saisie" type="number" name="matricule" placeholder="numéro matricule">
-                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/">
+                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/" required>
                     <input class="champ_saisie" type="email" name="email" placeholder="Email" required>
                     <input class="champ_saisie" type="password" name="passwd" placeholder="mots de passe" required>
                     <input class="champ_saisie" type="password" name="confpasswd"
@@ -77,7 +68,7 @@
                     <input class="boutton_soumettre" type="submit" name="ok" value="Aller">
                     <br>
                 </form>
-                <p class="signup">Vous n'avez pas de compte ?<button id="inscription">inscription</button></p>
+                <p class="signup">Vous n'avez pas de compte ?<button  id="inscription">inscription</button></p>
             </div>
 
         </div>
