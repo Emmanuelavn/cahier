@@ -112,9 +112,9 @@ $conn->close();
                 </select>
             </form>
             <ul>
-                <li><a href="#" target="_blank">Déconnection</a></li>
+                <li><a href="deconnexion.php" target="_blank">Déconnection</a></li>
                 <li><a href="about.html" target="_blank">à propos</a></li>
-                <li><a href="user.html" target="_blank" rel="noopener noreferrer"><button class="btn_setting">&#9881
+                <li><a href="user.php" target="_blank" rel="noopener noreferrer"><button class="btn_setting">&#9881
                             profil</button></a></p>
                 </li>
             </ul>
