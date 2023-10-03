@@ -1,3 +1,22 @@
+
+:root {
+    --font-Title: 'Roboto', sans-serif;
+    --font-link: 'Poppins Medium', sans-serif;
+    --size-nav-Title: 45px;
+    --size-nav-link: 12px;
+    --size-Title-header: 100px;
+    --img-profile:60px;
+    --main-color: #0f3054;
+    --second-color: #89939E;
+    --third-color: #000000;
+    --background-color: #FFFFFF;
+    --text-color: #222;
+    --form-color: #f0f8ff;
+    --whrite-color: #ffffff;
+    --size-btn: 16px;
+    --chevron_btn-height: 25px;
+    --translateX-chevron: 800px;
+}
 @keyframes animation_title {
     0% {
         transform-origin: inherit;
@@ -38,25 +57,6 @@
     }
 }
 
-:root {
-    --font-Title: 'Roboto', sans-serif;
-    --font-link: 'Poppins Medium', sans-serif;
-    --size-nav-Title: 45px;
-    --size-nav-link: 19px;
-    --size-Title-header: 100px;
-    --img-profile:60px;
-    --main-color: #0f3054;
-    --second-color: #89939E;
-    --third-color: #000000;
-    --background-color: #FFFFFF;
-    --text-color: #222;
-    --form-color: #f0f8ff;
-    --whrite-color: #ffffff;
-    --size-btn: 16px;
-    --chevron_btn-height: 25px;
-    --translateX-chevron: 800px;
-}
-
 a {
     font-family: var(--font-link);
     cursor: pointer !important;
@@ -78,6 +78,82 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+.navbar {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    height: 70px;
+    width: 85vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar.active {
+    width: 100vw;
+}
+
+.navbar h1 img {
+    height: var(--size-nav-Title);
+    padding: 0%;
+}
+
+.navbar h1:hover {
+    cursor: pointer;
+}
+
+.navbar h1 span {
+    position: relative;
+    color: #fafafb;
+    font-size: 35px;
+    font-weight: 900;
+    display: block;
+    overflow: hidden;
+    transform: translateX(-100px);
+    animation: 0.9s animation_title forwards cubic-bezier(1, -0.16, .33, 1.15);
+
+}
+
+.navbar ul {
+    margin: 0% 0%;
+    padding: 0%;
+    width: 600px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.navbar span {
+    position: absolute;
+}
+
+.navbar ul li a {
+    color: var(--couleur-blanche);
+    font-size: var(--size-nav-link);
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-spacing: 10px;
+    display: block;
+    overflow: hidden;
+    transform: translateX(100px);
+    animation: 0.9s animation_title forwards;
+}
+
+.navbar ul a:hover {
+    color: var(--main-color);
+}
+
+.navbar ul li {
+    padding-right: 20px;
+    overflow: hidden;
+    list-style: none;
+}
+
 
 .slider_container {
     width: 85vw;
@@ -154,6 +230,7 @@ body {
     width: 60%;
     padding: 6px 7px;
 }
+
 
 .profil_info {
     width: 100%;
@@ -277,58 +354,6 @@ body {
     color: var(--whrite-color);
 }
 
-.navbar {
-    position: fixed;
-    top: 0%;
-    right: 0%;
-    height: 70px;
-    width: 85vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.navbar.active {
-    width: 100vw;
-}
-
-.navbar h1 img {
-    height: var(--size-nav-Title);
-    padding: 0%;
-}
-
-.navbar h1:hover {
-    cursor: pointer;
-}
-
-.navbar h1 span {
-    position: relative;
-    color: #fafafb;
-    font-size: 35px;
-    font-weight: 900;
-    display: block;
-    overflow: hidden;
-    transform: translateX(-100px);
-    animation: 0.9s animation_title forwards cubic-bezier(1, -0.16, .33, 1.15);
-
-}
-
-.navbar ul {
-    margin: 0% 0%;
-    padding: 0%;
-    width: 600px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-}
-
-.navbar ul li {
-    padding-right: 20px;
-    overflow: hidden;
-    list-style: none;
-}
 
 .btn_setting {
     display: flex;
@@ -356,27 +381,6 @@ body {
     background: blur(7);
 }
 
-.navbar span {
-    position: absolute;
-}
-
-.navbar ul li a {
-    color: var(--couleur-blanche);
-    font-size: var(--size-nav-link);
-    font-weight: 900;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    word-spacing: 10px;
-    display: block;
-    overflow: hidden;
-    transform: translateX(100px);
-    animation: 0.9s animation_title forwards;
-}
-
-.navbar ul a:hover {
-    color: var(--main-color);
-}
 
 .menu-burgeur {
     display: none;
