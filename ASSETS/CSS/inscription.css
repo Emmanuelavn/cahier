@@ -16,7 +16,6 @@
     --text-width: 800px;
     --champ_saisie_height: 45px;
 }
-
 @keyframes animation_title {
     0% {
         transform-origin: inherit;

@@ -134,7 +134,6 @@ if (isset($_POST["ok"])) {
 
                 // Configurer PHPMailer pour l'envoi d'email
                 $mail = new PHPMailer(true);
-
                 try {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com'; // Remplacez par le serveur SMTP de votre fournisseur de messagerie
