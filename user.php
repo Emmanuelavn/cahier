@@ -26,6 +26,7 @@ $result = $conn->query($sql);
 if ($result->num_rows == 1) {
     $row = $result->fetch_assoc();
     $nom_utilisateur_actuel = $row['nom_user'];
+    $prenom_utilisateur_actuel = $row['prenom_user'];
     $email_actuel = $row['email'];
     $passwd_actuel=$row['passwd'];
     $matricule=$row['matricule'];
@@ -95,7 +96,7 @@ $conn->close();
     <header>
         <h1>Profil</h1>
         <ul>
-            <li><h2>Nom d'utilisateur: </h2><p><p><?php echo $nom_utilisateur_actuel; ?></p></li>
+            <li><h2>Nom & prenom: </h2><p><p><?php echo $nom_utilisateur_actuel , $prenom_utilisateur_actuel; ?></p></li>
             <li><h2>Email: </h2><p><?php echo $email_actuel; ?></p></li>
             <li><h2>Filières: </h2><p><?php echo $filliere; ?></p></li> 
             <li><h2>Maticule: </h2><p><?php echo $matricule; ?></p></li>        
