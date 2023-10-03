@@ -3,6 +3,7 @@ if (isset($_POST["ok"])) {
     // Récupération des données du formulaire
     $email_or_username = $_POST['email']; // Peut être un e-mail ou un nom d'utilisateur
     $password = $_POST['passwd'];
+    
     // Connexion à la base de données
     $servername = "localhost";
     $username = "root";
