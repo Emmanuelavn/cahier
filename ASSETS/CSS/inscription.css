@@ -333,7 +333,7 @@ body {
         --form-color: #f0f8ff;
         --whrite-color: #ffffff;
         --size-text: 25px;
-        --text-width:500px;
+        --text-width: 500px;
         --champ_saisie_height: 45px;
     }
 
@@ -392,6 +392,7 @@ body {
     .navbar ul {
         display: none;
     }
+
     .container-left::after {
         display: none;
     }

@@ -57,7 +57,7 @@
                     $result = $conn->query($sql);
 
                     if (!$result->num_rows == 1) {
-                      // Authentification échouée, afficher un message d'erreur
+                        // Authentification échouée, afficher un message d'erreur
                         echo "<span style=' padding:0px 10px; font-weigh font-size: 15px; color:red; background-color:#FFFFFF;'> Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.</span>";
                     }
                 }
