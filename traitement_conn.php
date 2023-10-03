@@ -27,8 +27,7 @@
             header("Location: acceuil.php"); // Rediriger vers la page sécurisée
             exit();
         } else {
-            // Authentification échouée, afficher un message d'erreur
-            echo "Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.";
+            include "index.php";
         }
     
         $conn->close();

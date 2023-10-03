@@ -2,7 +2,7 @@
     --font-body: 'Poppins Medium', sans-serif;
     --size-nav-Title: 50px;
     --size-nav-link: 19px;
-    --size-Title: 70px;
+    --size-Title: 60px;
     --nav-height: 70px;
     --nav-color: #ffffff;
     --main-color: #0f3054;
@@ -164,7 +164,6 @@ body {
     flex-shrink: 0;
 }
 
-.container-left,
 .container-rigth {
     position: absolute;
     height: auto;
@@ -174,34 +173,6 @@ body {
     flex-wrap: wrap;
     list-style: none;
     text-decoration: none;
-}
-
-.container-left {
-    left: 0;
-    z-index: 1000px !important;
-    height: auto;
-    width: 100%;
-    display: flex;
-    justify-self: center;
-    justify-content: space-around;
-    opacity: 0;
-    align-self: center;;
-    margin-top: 0%;
-
-}
-
-.container-left::after {
-    content: "Obtenez les meilleurs résultats avec notre plateforme .Améliorez vos compétences et réussissez vos examens avec Ezeetest.";
-    font-family: var(--font-Title);
-    text-align: center;
-    height: auto;
-    border: solid 0.1px;
-    border-radius: 20px;
-    padding: 10px;
-    font-size: var(--size-text);
-    max-width: var(--text-width);
-    background-color: var(--main-color);
-    background: blur(7);
 }
 
 .container-rigth {

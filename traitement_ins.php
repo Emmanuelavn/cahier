@@ -6,6 +6,10 @@
 <html lang="en">
 
 <head>
+    <!-- demarrer la session -->
+<?php
+    session_start();
+?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -41,8 +45,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"crossorigin="anonymous"></script>
     
     <?php
-    session_start();
-
+    
     if (isset($_POST['code_confirmation'])) {
         $code_utilisateur = $_POST['code_confirmation'];
 
@@ -88,6 +91,7 @@ require 'DATA/module/vendor/autoload.php';
 if (isset($_POST["ok"])) {
     //enregistrement des infos entrer dans le formulaire
     $nom_user = $_POST['nom_user'];
+    $prenom_user= $_POST['prenom_user'] ;
     $matricule = $_POST['matricule'];
     $filliere = $_POST['filliere'];
     $email = $_POST['email'];
@@ -95,14 +99,7 @@ if (isset($_POST["ok"])) {
     $confirm = $_POST['confpasswd'];  // Obtient la date et l'heure actuelles au format DATETIME
     $date_inscription = date("Y-m-d H:i:s"); 
     
-    $filieres = array("ia", "gl", "si", "im", "seiot");// Tableau des filières disponibles (en minuscules)
-
-    $filliere = strtolower($filliere); //mettre la filliere en miniscule 
-
-    // Vérification si la filière indiquée est valide
-    if (in_array($filliere, $filieres)) {
-        echo '<script>console.log("la filliere entre est valide")</script>';
-        // Vérifiez que le mot de passe correspond à la confirmation
+     // Vérifiez que le mot de passe correspond à la confirmation
         if ($passwd == $confirm) {
             // Vérifiez que les variables ne sont pas vides et que Matricule est alphanumérique
             if (!empty($nom_user) && !empty($matricule) && ctype_alnum($matricule)) {
@@ -112,13 +109,17 @@ if (isset($_POST["ok"])) {
 
                 // Échappez les données pour éviter les injections SQL
                 $nom_user = mysqli_real_escape_string($conn, $nom_user);
+                $prenom_user = mysqli_real_escape_string($conn, $prenom_user);
                 $matricule = mysqli_real_escape_string($conn, $matricule);
                 $email = mysqli_real_escape_string($conn, $email);
                 $filliere = mysqli_real_escape_string($conn, $filliere);
                 $passwd = mysqli_real_escape_string($conn, $passwd);
+                
+                // Hashage du mot de passe
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Créez et exécutez la requête SQL pour insérer les données dans la table utilisateur
-                $sql = "INSERT INTO USERS (nom_user,matricule,filliere,email,passwd,date_inscription) VALUES ('$nom_user', '$matricule','$filliere', '$email', '$passwd','$date_inscription')";
+                $sql = "INSERT INTO USERS (nom_user,prenom_user,matricule,filliere,email,passwd,date_inscription) VALUES ('$nom_user','$prenom_user', '$matricule','$filliere', '$email', '$passwd','$date_inscription')";
                 echo '<script>alert("Information valide ! Confirmer votre email")</script>';
                 if (mysqli_query($conn, $sql)) {
 
@@ -164,27 +165,35 @@ if (isset($_POST["ok"])) {
 
                         $mail->send();
                         echo 'Email envoyé avec succès';
+
                     } catch (Exception $e) {
-                        echo 'Erreur lors de l\'envoi de l\'email : ', $mail->ErrorInfo;
+                        echo 'Erreur lors de l\'envoi de l\'email : '. $mail->ErrorInfo .'<a style="color:blue;" href="index.php">réesayer</a>';
                     }
 
                 } else {
-                    echo "Erreur lors de l'enregistrement: " . mysqli_error($conn);
+                    echo "Erreur lors de l'enregistrement: " . mysqli_error($conn) ."<a style='color:blue;' href='index.php'>réesayer</a>";
                 }
 
                 // Fermez la connexion à la base de données
                 mysqli_close($conn);
 
             } else {
-                echo "Veuillez remplir correctement tous les champs.";
+                echo "<style>
+                     form{
+                        display: none;
+                     }
+                    </style>";
+                echo "Veuillez remplir correctement tous les champs.<a style='color:blue;' href='index.php'>réesayer</a>";
             }
 
         } else {
-            echo "Les mots de passe ne correspondent pas.";
+            echo "<style>
+                     form{
+                        display: none;
+                     }
+                    </style>";
+            echo "Les mots de passe ne correspondent pas.<a style='color:blue;' href='index.php'>réesayer</a>";
         }
-    } else {
-        echo "La filière '$filliere' n'est pas une filière valide.";
-    }
 }
 
 

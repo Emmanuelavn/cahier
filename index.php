@@ -12,12 +12,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <title>inscription | Ezeetest</title>
+    <title>connexion | Ezeetest</title>
 </head>
 
 <body>
     <div class="background">
-        <div class="slider_container">
+        <div class=img">
             <div class="slider">
                 <img src="ASSETS/IMG/pexels-pixabay-261909.jpg" alt="" srcset="">
                 <img src="ASSETS/IMG/pexels-polina-zimmerman-3747502.jpg" alt="" srcset="">
@@ -29,33 +29,12 @@
     </div>
     <!--navbar-->
     <nav class="navbar">
-        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt="logo_Ezeetest" srcset=""></span></h1>
+        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png"
+                    alt="logo_Ezeetest" srcset=""></span></h1>
         <a class="btn_about" href="about.html">à propos</a>
     </nav>
     <!--centre de la page-->
     <div class="container">
-        <div class="container-left">
-            <div class="form-container">
-                <form action="traitement_ins.php" method="POST">
-                    <h1>
-                        <span>Inscripton</span>
-                    </h1>
-                    <br>
-                    <input class="champ_saisie" type="text" name="nom_user" placeholder="nom d'utllisateur" required>
-                    <input class="champ_saisie" type="number" name="matricule" placeholder="numéro matricule">
-                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/" required>
-                    <input class="champ_saisie" type="email" name="email" placeholder="Email" required>
-                    <input class="champ_saisie" type="password" name="passwd" placeholder="mots de passe" required>
-                    <input class="champ_saisie" type="password" name="confpasswd"
-                        placeholder="Confirmer votre mots de passe" required>
-                    <input class="boutton_soumettre" type="submit" name="ok" value="inscription">
-                    <br>
-                </form>
-                <p>vous êtes dejà inscrit ?<button id="connexion">connexion</button></p>
-            </div>
-        </div>
-
-
         <div class="container-rigth">
             <div class="form-container">
                 <form action="traitement_conn.php" method="post">
@@ -68,13 +47,28 @@
                     <input class="boutton_soumettre" type="submit" name="ok" value="Aller">
                     <br>
                 </form>
-                <p class="signup">Vous n'avez pas de compte ?<button  id="inscription">inscription</button></p>
+                <?php if (isset($_POST["ok"])) {
+                    // Récupération des données du formulaire
+                    $email_or_username = $_POST['email']; // Peut être un e-mail ou un nom d'utilisateur
+                    $password = $_POST['passwd'];
+                    include "DATA/include/config_BD.php";
+                    // Vérification de l'utilisateur dans la base de données
+                    $sql = "SELECT * FROM USERS WHERE (email='$email_or_username' OR nom_user='$email_or_username') AND passwd='$password'";
+                    $result = $conn->query($sql);
+
+                    if (!$result->num_rows == 1) {
+                      // Authentification échouée, afficher un message d'erreur
+                        echo "<span style=' padding:0px 10px; font-weigh font-size: 15px; color:red; background-color:#FFFFFF;'> Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.</span>";
+                    }
+                }
+                ?>
+                <p class="signup">Vous n'avez pas de compte ?<a href="inscription.php">inscription</a></p>
             </div>
 
         </div>
     </div>
-<!--script javascript-->
-    <script src="ASSETS/JS/inscription.js"></script>
+    <!--script javascript <script src="ASSETS/JS/inscription.js"></script>-->
+
 </body>
 
 </html>
