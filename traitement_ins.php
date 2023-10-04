@@ -1,78 +1,5 @@
 <!---traitement d'inscription et code de comfirmation-->
 
-
-<!---traitement code de comfirmation-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- demarrer la session -->
-    <?php
-    session_start();
-    ?>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Confimation | inscription</title>
-</head>
-<!---style de la page-->
-<style>
-    body {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-</style>
-
-<body>
-    <!--inclure la navbar php -->
-    <nav>
-        <?php include 'DATA/include/navbar.php'; ?>
-    </nav>
-
-    <h2>Vérification du code de confirmation</h2>
-    <!--ajouter un formulaire pour vérifier le code de confirmaiton-->
-    <form action="" method="post">
-        <label for="code_confirmation">Entrez le code de confirmation à 6 chiffres :</label>
-        <input type="text" id="code_confirmation" name="code_confirmation" maxlength="6" required>
-        <button type="submit">Vérifier</button>
-    </form>
-    <!--script boostrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
-    <?php
-
-    if (isset($_POST['code_confirmation'])) {
-        $code_utilisateur = $_POST['code_confirmation'];
-
-        if ($code_utilisateur == $_SESSION['code_confirmation']) {
-            echo '<script>alert("Email vérifié ! Code de confirmation valide.")
-            setTimeout(function() {
-                window.location.href = "index.php"; 
-            }, 2000);
-            
-            </script>';
-            // header("Location: index.php");
-            //exit()
-            // Vous pouvez marquer l'email comme vérifié dans la base de données ici
-    
-        } else {
-            echo "Code de confirmation invalide.<a href='#' alt='réesayé cnfirmation'> Veuillez réessayer.</a>";
-        }
-    }
-    ?>
-</body>
-
-</html>
-
-
-
 <!---traitement  d'inscription-->
 <?php
 
@@ -91,7 +18,7 @@ require 'DATA/module/vendor/autoload.php';
 
 //si on soummet le formulaire d'inscription
 if (isset($_POST["ok"])) {
-    //enregistrement des infos entrer dans le formulaire
+   //enregistrement des infos entrer dans le formulaire
     $nom_user = $_POST['nom_user'];
     $prenom_user = $_POST['prenom_user'];
     $matricule = $_POST['matricule'];
@@ -127,9 +54,9 @@ if (isset($_POST["ok"])) {
 
                 // Générer un code de confirmation de 6 chiffres
                 $code_confirmation = rand(100000, 999999);
-
+                
                 // Stocker le code de confirmation dans une variable de session
-
+                session_start();
                 $_SESSION['code_confirmation'] = $code_confirmation;
 
                 // Configurer PHPMailer pour l'envoi d'email
@@ -166,7 +93,12 @@ if (isset($_POST["ok"])) {
                             L'équipe de LKAV technologie";
 
                     $mail->send();
-                    echo 'Email envoyé avec succès';
+                
+                    echo "<script>alert('Email envoyé avec succès')
+                    setTimeout(function(){
+                        window.location.href= 'verifier_code.php';
+                    }, 500);
+                    </script>";
 
                 } catch (Exception $e) {
                     echo 'Erreur lors de l\'envoi de l\'email : ' . $mail->ErrorInfo . '<a style="color:blue;" href="index.php">réesayer</a>';
@@ -180,20 +112,12 @@ if (isset($_POST["ok"])) {
             mysqli_close($conn);
 
         } else {
-            echo "<style>
-                     form{
-                        display: none;
-                     }
-                    </style>";
+            
             echo "Veuillez remplir correctement tous les champs.<a style='color:blue;' href='index.php'>réesayer</a>";
         }
 
     } else {
-        echo "<style>
-                     form{
-                        display: none;
-                     }
-                    </style>";
+        
         echo "Les mots de passe ne correspondent pas.<a style='color:blue;' href='index.php'>réesayer</a>";
     }
 }

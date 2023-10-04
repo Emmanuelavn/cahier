@@ -7,17 +7,17 @@
 <head>
     <meta charset="UTF-8">
     <meta e-width, initial-scale="1.0">
-    <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
-    <link rel="stylesheet" href="ASSETS/CSS/inscription.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ASSETS/CSS/inscription.css">
+    <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
     <title>connexion | Ezeetest</title>
 </head>
 
 <body>
     <div class="background">
-        <div class=img">
+        <div class="img">
             <div class="slider">
                 <img src="ASSETS/IMG/pexels-pixabay-261909.jpg" alt="" srcset="">
                 <img src="ASSETS/IMG/pexels-polina-zimmerman-3747502.jpg" alt="" srcset="">
@@ -29,9 +29,10 @@
     </div>
     <!--navbar-->
     <nav class="navbar">
-        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png"
-                    alt="logo_Ezeetest" srcset=""></span></h1>
+
+        <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt="logo_Ezeetest" srcset=""></span></h1>
         <a class="btn_about" href="about.html">à propos</a>
+        
     </nav>
     <!--centre de la page-->
     <div class="container">
