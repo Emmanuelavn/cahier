@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ASSETS/CSS/inscription.css">
+    <link rel="stylesheet" href="ASSETS/CSS/connexion.css">
     <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
     <title>connexion | Ezeetest</title>
 </head>
@@ -32,7 +32,7 @@
 
         <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt="logo_Ezeetest" srcset=""></span></h1>
         <a class="btn_about" href="about.html">à propos</a>
-        
+
     </nav>
     <!--centre de la page-->
     <div class="container">
@@ -59,7 +59,7 @@
 
                     if (!$result->num_rows == 1) {
                         // Authentification échouée, afficher un message d'erreur
-                        echo "<span style=' padding:0px 10px; font-weigh font-size: 15px; color:red; background-color:#FFFFFF;'> Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.</span>";
+                        echo "<span style=' padding:0px 10px; font-weigh:bold; font-size: 35px; color:red; background-color:#FFFFFF;'> Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.</span>";
                     }
                 }
                 ?>
