@@ -62,8 +62,9 @@
             <h1><img class="logo" src="ASSETS/chart-graphique/ezeetest-low-resolution-logo-white-on-transparent-background.png" alt="logo-Ezeetest" srcset=""></h1>
             <ul class="link_container">
                 <li class="link"><a href="user.php"><img class="img_rond img-profil" src="<?php echo $cheminImageProfil; ?>" alt="image de profil" srcset=""></a></li>
-                <li class="link"><a href="about.html">a propos</a></li>
                 <li class="link"><a href="deconnexion.php">deconnexion</a></li>
+                <li class="link"><a href="about.html">a propos</a></li>
+                <li class="link"><a href="#container_contact">Contact</a></li>
                 <li><img src="" alt="" srcset=""></li>
             </ul>
         </nav>
@@ -767,7 +768,7 @@
 
 
     <div id="container_contact">
-    <h1>Contactez-nous</h1>
+    <h1 class="title">Contactez-nous</h1>
     <form id="contact-form" action="contact.php" method="post">
         <input class="input_radius-12 input" placeholder="Votre Nom " type="text" id="name" name="name_contact" required>
         <br>

@@ -60,6 +60,7 @@
     margin: 0;
 }
 a{
+    cursor: pointer;
     color: var(--color-white);
     text-decoration: none !important;
 }
