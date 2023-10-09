@@ -45,7 +45,7 @@ if (isset($_POST['modifier'])) {
     if ($ancien_motdepasse==$passwd_actuel){
             // Mettre à jour les informations de l'utilisateur dans la base de données
     $update_sql = "UPDATE USERS SET nom_user='$nouveau_nom_utilisateur', passwd='$nouveau_mot_de_passe' WHERE email='$email_actuel'";
-    
+
     if ($conn->query($update_sql) === TRUE) {
         echo "<script>alert('Les informations ont été mises à jour avec succès.');</script>";
         // Vous pouvez également mettre à jour les valeurs dans la session si nécessaire
@@ -54,7 +54,7 @@ if (isset($_POST['modifier'])) {
         echo "Erreur lors de la mise à jour des informations : " . $conn->error;
     }
     }else{
-        echo "<script>alert('Mot de passe ou information incorrect veillez reesayer');</script>";  
+        echo "<script>alert('Mot de passe ou information incorrect veillez reesayer');</script>";
     }
 
 }
@@ -67,6 +67,7 @@ $conn->close();
 <html>
 <head>
     <title>Profil</title>
+    <link rel="stylesheet" href="ASSETS/CSS/user.css">
     <style>
         body{
             font-family: 'Poppins Medium', sans-serif;
@@ -80,11 +81,11 @@ $conn->close();
         header ul li{
             display: flex;
             align-items: center;
-            
+
         }
         header ul li p{
             padding-left: 10px;
-        } 
+        }
         header ul li:nth-child(3) p {
             text-transform: uppercase;
         }
@@ -93,27 +94,25 @@ $conn->close();
 </head>
 <body>
     <?php include "DATA/include/navbar.php"; ?>
-    <header>
-        <h1>Profil</h1>
+
+
+<h1>Profil</h1>
         <ul>
             <li><h2>Nom & prenom: </h2><p><p><?php echo $nom_utilisateur_actuel , $prenom_utilisateur_actuel; ?></p></li>
             <li><h2>Email: </h2><p><?php echo $email_actuel; ?></p></li>
-            <li><h2>Filières: </h2><p><?php echo $filliere; ?></p></li> 
-            <li><h2>Maticule: </h2><p><?php echo $matricule; ?></p></li>        
+            <li><h2>Filières: </h2><p><?php echo $filliere; ?></p></li>
+            <li><h2>Maticule: </h2><p><?php echo $matricule; ?></p></li>
         </ul>
-    </header>
-    
-
     <h2>Modifier les informations</h2>
     <form method="post" action="">
-       
+
 
         <label for="nouveau_nom_utilisateur">Nouveau nom d'utilisateur :</label>
         <input type="text" name="nouveau_nom_utilisateur" id="nouveau_nom_utilisateur" required><br><br>
-        
+
         <label for="ancien_motdepasse">mot de passe Actuel :</label>
         <input type="text" name="ancien_motdepasse" id="ancien_motdepasse" required><br><br>
-        
+
         <label for="nouveau_mot_de_passe">Nouveau mot de passe :</label>
         <input type="password" name="nouveau_mot_de_passe" id="nouveau_mot_de_passe" required><br><br>
 

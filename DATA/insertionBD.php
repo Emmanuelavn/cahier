@@ -57,7 +57,7 @@
             <option value="LICENCE_3">LICENCE_3</option>
         </select>
         <br>
-        <label for="filliere">Semestre :</label>
+        <label for="semestre">Semestre :</label>
         <input type="text" name="semestre" required><br>
 
         <label for="filliere">Filière :</label>

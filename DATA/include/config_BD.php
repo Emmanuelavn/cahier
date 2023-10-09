@@ -15,7 +15,6 @@ if (!$conn) {
     echo "
     <script>
     console.log('Connexion réussie');
-    </script>;
-    ";
+    </script>";
 }
 ?>

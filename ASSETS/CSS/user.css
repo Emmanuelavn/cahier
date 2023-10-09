@@ -143,11 +143,10 @@ nav ul a:hover {
 }
 
 header{
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     width: 100vw;
-    height: 100px;
-    background-color: var(--main-color);
 }
 .profile_content{
     position: relative;

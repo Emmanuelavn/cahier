@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <nav>
+    <h1></h1>
+  <ul>
+    <li><a href="/Ezeetest/acceuil.php">Acceuil</a></li>
+    <li><a href="/Ezeetest/about.php"></a>About</li>
+  </ul>
+  </nav>
   <div id="app">
     <div id="sidebar">
       <h3>Contexte</h3>

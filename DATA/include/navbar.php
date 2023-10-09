@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
     <style>
         :root {
             --font-Title: 'Roboto', sans-serif;
             --font-link: 'Poppins Medium', sans-serif;
             --size-nav-Title: 50px;
             --size-nav-link: 19px;
-            --size-Title: 70px;
+            --size-Title: 60px;
             --main-color: #0f3054;
             --second-color: #89939E;
             --third-color: #000000;

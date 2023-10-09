@@ -28,6 +28,8 @@ if (isset($_POST["ok"])) {
     $confirm = $_POST['confpasswd']; // Obtient la date et l'heure actuelles au format DATETIME
     $date_inscription = date("Y-m-d H:i:s");
 
+    $nom_user=strtoupper($nom_user);//upercase le nom
+
     // Vérifiez que le mot de passe correspond à la confirmation
     if ($passwd == $confirm) {
         // Vérifiez que les variables ne sont pas vides et que Matricule est alphanumérique

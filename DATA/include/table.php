@@ -7,10 +7,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-        body {
-            margin-top: 20px;
-        }
-
         .bg-light-gray {
             background-color: #f7f7f7;
         }
@@ -139,34 +135,22 @@
 <body>
     <!-- Le contenu sera affiché ici en fonction du bouton cliqué -->
     <?php
-    // Traitement du formulaire lorsque l'utilisateur soumet le choix de catégorie
-    if (isset($_POST["licence"])) {
-        $nom_table = $_POST["licence"];
-        // Utilisez $_POST["licence"] ici
-    } else {
-        // Traitez le cas où "licence" n'est pas défini
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["categorie"])) {
-        // Récupérer la catégorie sélectionnée
-    
-        $categorie = $_POST["categorie"];
+    session_start(); // Démarrez la session (si ce n'est pas déjà fait)
 
-        // Connexion à la base de données (assurez-vous de remplacer les informations de connexion)
-        include "config_BD.php";
-        // Vérification de la connexion
-        if ($conn->connect_error) {
-            die("La connexion à la base de données a échoué : " . $conn->connect_error);
+    // Vérifiez si le tableau de résultats de la session existe
+    if (isset($_SESSION['resultats'])) {
+        $resultats = $_SESSION['resultats'];
+    
+        // Maintenant, vous pouvez parcourir et afficher les résultats comme vous le souhaitez
+        foreach ($resultats as $resultat) {
+            // Accédez aux données comme $resultat['nom_colonne']
+            echo "Semestre : " . $resultat['semestre'] . "<br>";
+            echo "Nom_ue : " . $resultat['nom_ue'] . "<br>";
+            echo "Nom_ec : " . $resultat['nom_ec'] . "<br>";
+            // Affichez d'autres données si nécessaire
         }
-
-        // Requête SQL pour récupérer les données en fonction de la catégorie
-        $sql = "SELECT * FROM  $nom_table WHERE categorie_fichier = '$categorie'";
-        $result = $conn->query($sql);
-
-        // Afficher les données de la base de données en fonction du choix de catégorie
-    
-
-        // Fermer la connexion à la base de données
-        $conn->close();
+    } else {
+        echo "Aucun résultat trouvé en session.";
     }
     ?>
     </div>
