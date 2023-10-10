@@ -595,6 +595,7 @@
             </div>
             <br>
             <div id="searchResults"></div>
+            <img src="ASSETS/IMG/Happy Bunch - Desk.png" alt="">
         </div>
         <br>
         <!--section image slide-->
@@ -625,6 +626,7 @@
                 <button class=" "><input class="input_radius-12 categorie" type="submit" name="categorie" value="epreuve"></button>
 
             </form>
+            <img src="ASSETS/IMG/The Little Things - Working.png" alt="" srcset="">
         </div>
         
         <?php
@@ -782,8 +784,8 @@
     <br>
     <footer id="footer">
     <img class="logo logo_footer" src="ASSETS/chart-graphique/ezeetest-website-favicon-white.png" alt="logo" srcset="">
-    <p><span class="text">LKAV Technologie</span><br><a  href="#" target="_blank" rel="noopener noreferrer">contacter Equipe</a><br></p>
-    <p><span>🇧🇯 Bj: Atlantique|Atrokpocodji</span><br><span>Email: YOUR_EMAIL@example.com</span></p>
+    <p><span class="text">LKAV Technologie</span><a  href="#" target="_blank" rel="noopener noreferrer">contacter Equipe</a><br></p>
+    <p><span>🇧🇯 Bj: Atlantique|Atrokpocodji</span><span>Email: YOUR_EMAIL@example.com</span></p>
     </footer>
 
 
