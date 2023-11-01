@@ -92,7 +92,7 @@ if (isset($_POST["ok"])) {
                             <br>
                             Cordialement,
                             <br>
-                            L'équipe de LKAV technologie";
+                            L'équipe de LKAV Society";
 
                     $mail->send();
                 

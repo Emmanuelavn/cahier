@@ -1,0 +1,194 @@
+/*importation font familly*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+/*root*/
+:root {
+    --logo-fontFam:'ezeetest-exo-2-bold' sans-serif;
+    --main-FontFam: 'Roboto', sans-serif;
+    --Montserrat-FontFam: 'Montserrat', sans-serif;
+    --Inter-FontFam: 'Inter', sans-serif;
+    --size-nav-Title: 35px;
+    --input-text-Fontsize: 1em;
+    --size-Title: 2.5em;
+    --size-text: 1.1em;
+    --size-link: 1.3em;
+    --size-logo: 2em;
+    --size-btn: 1.2em;
+    --size-nomUser: 0.8em;
+    --welcom-size: 4em;
+    --img-profile: 60px;
+    --main-color: #0f3054;
+    --second-color: #89939E;
+    --third-color: #000000;
+    --background-color: #FFFFFF;
+    --text-color: #222;
+    --form-color: #f0f8ff;
+    --color-white: #ffffff;
+    --svg-group-width: 660px;
+    --svg-group-height: 479px;
+}
+
+* {
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    color: var(--color-white);
+    text-decoration: none !important;
+}
+
+li {
+    list-style: none !important;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    flex-direction: column;
+    font-family: var(--main-FontFam);
+}
+
+/*class a utilliser*/
+.text_main {
+    color: var(--main-color);
+}
+
+.title {
+    font-weight: bold;
+    font-size: var(--size-Title);
+}
+
+.font_montserrat {
+    font-family: var(--Montserrat-FontFam) !important;
+    /* montserrat */
+}
+
+/* navbar et lien */
+.navbar {
+  background-color: var(--main-color);
+    color: var(--color-white);
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.navbar h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-profil {
+    border-radius: 10px;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+}
+
+.link_container {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 2rem;
+    padding: 0%;
+}
+
+.link {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.link a { 
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: var(--size-link);
+    color: var(--color-white);
+    transition: all 0.5s ease-out;
+    letter-spacing: 0.5px;
+}
+
+/*effet hover des liens de la navbar*/
+
+.link_container .link a::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-white);
+    height: 9px;
+    top:0px;
+    width: 0;
+    left: 0%;
+    bottom: 0px;
+    transition: all 0.3s;
+}
+.link_container .link a:focus:after {
+    left: 1;
+    width: 100%;
+}
+
+.link_container .link a:hover {
+    display: block;
+    color:#f0f8ffb0;
+}
+ 
+.text-logo{
+    font-size: var(--logo-fontFam);
+    padding-left: 10px;
+    font-size: 1.5em;
+}
+.logo {
+    height: var(--size-logo);
+    width: auto;
+}
+
+#app {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#contextContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#contextInput {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+#messages {
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+p {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

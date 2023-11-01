@@ -141,3 +141,90 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+
+
+Voici un script SQL pour créer les tables mentionnées précédemment dans votre base de données :
+
+```sql
+-- Création de la table pour les utilisateurs (USERS)
+CREATE TABLE `USERS` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,  -- Stocker le mot de passe hashé
+  -- Ajoutez d'autres informations de profil ici (nom, photo, etc.)
+  PRIMARY KEY (`id_user`)
+);
+
+-- Création de la table pour les publications (POSTS)
+CREATE TABLE `POSTS` (
+  `id_post` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,  -- Référence à l'utilisateur qui a posté la publication
+  `post_text` text NOT NULL,
+  `post_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_post`),
+  FOREIGN KEY (`user_id`) REFERENCES `USERS`(`id_user`)
+);
+
+-- Création de la table pour les commentaires (COMMENTS)
+CREATE TABLE `COMMENTS` (
+  `id_comment` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,  -- Référence à l'utilisateur qui a commenté
+  `post_id` int(11) NOT NULL,  -- Référence à la publication commentée
+  `comment_text` text NOT NULL,
+  `comment_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_comment`),
+  FOREIGN KEY (`user_id`) REFERENCES `USERS`(`id_user`),
+  FOREIGN KEY (`post_id`) REFERENCES `POSTS`(`id_post`)
+);
+
+-- Création de la table pour les likes (LIKES)
+CREATE TABLE `LIKES` (
+  `id_like` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,  -- Référence à l'utilisateur qui a "liké"
+  `post_id` int(11) NOT NULL,  -- Référence à la publication "likée"
+  `like_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_like`),
+  FOREIGN KEY (`user_id`) REFERENCES `USERS`(`id_user`),
+  FOREIGN KEY (`post_id`) REFERENCES `POSTS`(`id_post`)
+);
+
+-- Création de la table pour les relations d'amitié (FRIENDSHIPS)
+CREATE TABLE `FRIENDSHIPS` (
+  `id_friendship` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id1` int(11) NOT NULL,  -- Référence à l'utilisateur qui envoie la demande
+  `user_id2` int(11) NOT NULL,  -- Référence à l'utilisateur qui accepte la demande
+  `status` varchar(50) NOT NULL,  -- Statut de l'amitié (acceptée, en attente, rejetée, etc.)
+  PRIMARY KEY (`id_friendship`),
+  FOREIGN KEY (`user_id1`) REFERENCES `USERS`(`id_user`),
+  FOREIGN KEY (`user_id2`) REFERENCES `USERS`(`id_user`)
+);
+
+-- Création de la table pour les notifications (NOTIFICATIONS)
+CREATE TABLE `NOTIFICATIONS` (
+  `id_notification` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,  -- Référence à l'utilisateur destinataire
+  `notification_type` varchar(50) NOT NULL,  -- Type de notification (like, commentaire, etc.)
+  `post_id` int(11),  -- Référence à la publication associée (peut être NULL pour certains types de notifications)
+  `status` varchar(50) NOT NULL,  -- Statut de notification (non lu, lu)
+  `notification_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_notification`),
+  FOREIGN KEY (`user_id`) REFERENCES `USERS`(`id_user`),
+  FOREIGN KEY (`post_id`) REFERENCES `POSTS`(`id_post`)
+);
+
+-- Créez d'autres tables si vous avez besoin de stocker des médias, des statistiques, etc.
+```
+
+N'oubliez pas d'ajuster ces tables selon vos besoins spécifiques et de mettre en œuvre des mécanismes de sécurité, tels que la validation et la protection contre les attaques SQL, pour assurer la fiabilité et la sécurité de votre application.

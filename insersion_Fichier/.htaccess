@@ -1,0 +1,4 @@
+AuthName "Zone sécurisée"
+AuthType Basic
+AuthUserFile "/opt/lampp/htdocs/EZEETEST/Ezeetest/insersion_Fichier/.htpasswd"
+Require valid-user

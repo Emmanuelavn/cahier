@@ -3,6 +3,12 @@
 
 <head>
     <title>Formulaire d'insertion de fichiers PDF dans la base de donner</title>
+    <style>
+        input[type="text"]{
+            border:solid 1px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,6 +93,9 @@
         <input type="submit" value="Insérer le fichier">
 
     </form>
+
 </body>
 
 </html>
+
+

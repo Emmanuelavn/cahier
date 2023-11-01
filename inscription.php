@@ -15,55 +15,48 @@
 </head>
 
 <body>
-    <div class="background">
-        <div class="img">
-            <div class="slider">
-                <img src="ASSETS/IMG/pexels-pixabay-261909.jpg" alt="" srcset="">
-                <img src="ASSETS/IMG/pexels-polina-zimmerman-3747502.jpg" alt="" srcset="">
-                <img src="ASSETS/IMG/pexels-pixabay-301920.jpg" alt="" srcset="">
-                <img src="ASSETS/IMG/pexels-mikhail-nilov-7583935.jpg" alt="" srcset="">
-                <img src="ASSETS/IMG/pexels-pixabay-159751.jpg" alt="" srcset="">
-            </div>
-        </div>
+    <div class="loader">
     </div>
     <!--navbar-->
     <nav class="navbar">
         <h1><span><img src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png"
                     alt="logo_Ezeetest" srcset=""></span></h1>
-        <a class="btn_about" href="about.html">à propos</a>
     </nav>
     <div class="container">
+        <div class="container-left">
+            <p class="title text-black">Accédez à des milliers de cours, exercices et épreuves d'examens passés en un seul clic ! Améliorez vos compétences et réussissez vos examens avec Ezeetest !!.</p>
+            <a href="about.html" class="about_link"><img width="50" height="50" src="https://img.icons8.com/pastel-glyph/50/information--v1.png" alt="information--v1"/></a>
+        </div>
         <div class="container-rigth">
             <div class="form-container">
                 <form action="" method="POST">
                     <h1>
-                        <span>Inscripton</span>
+                        <span class="title">Inscripton</span>
                     </h1>
                     <br>
-                    <input class="champ_saisie" type="text" name="nom_user" placeholder="Votre nom ..." requiblack>
-                    <input class="champ_saisie" type="text" name="prenom_user" placeholder="Votre prenom ..." requiblack>
+                    <input class="champ_saisie" type="text" name="nom_user" placeholder="Votre nom ..." requiblack requiblack>
+                    <input class="champ_saisie" type="text" name="prenom_user" placeholder="Votre prenom ..." requiblack requiblack>
                     <input class="champ_saisie" type="number" name="matricule" placeholder="numéro matricule">
-                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/"
-                        requiblack>
-                    <input class="champ_saisie" type="email" name="email" placeholder="Email" requiblack>
+                    <input class="champ_saisie" type="text" name="filliere" placeholder="votre filliere IA/GL/SI/SeIOT/" requiblack requiblack>
+                    <input class="champ_saisie" type="email" name="email" placeholder="Email" requiblack required>
                     <input class="champ_saisie" type="password" name="passwd" placeholder="mots de passe" requiblack>
                     <input class="champ_saisie" type="password" name="confpasswd"
                         placeholder="Confirmer votre mots de passe" requiblack>
-                    <input class="boutton_soumettre" type="submit" name="ok" value="inscription">
+                    <input class="boutton_soumettre bg-white text-black" type="submit" name="ok" value="inscription">
                     <br>
                 </form>
                 <?php
-                if (isset($_POST["ok"])) {
-                    //enregistrement des infos entrer dans le formulaire
-                    $nom_user = $_POST['nom_user'];
-                    $prenom_user = $_POST['prenom_user'];
-                    $matricule = $_POST['matricule'];
-                    $filliere = $_POST['filliere'];
-                    $email = $_POST['email'];
-                    $passwd = $_POST['passwd'];
-                    $confirm = $_POST['confpasswd']; // Obtient la date et l'heure actuelles au format DATETIME
-                    $date_inscription = date("Y-m-d H:i:s");
-                    include "DATA/include/config_BD.php";
+                    if (isset($_POST["ok"])) {
+                        //enregistrement des infos entrer dans le formulaire
+                        $nom_user = $_POST['nom_user'];
+                        $prenom_user = $_POST['prenom_user'];
+                        $matricule = $_POST['matricule'];
+                        $filliere = $_POST['filliere'];
+                        $email = $_POST['email'];
+                        $passwd = $_POST['passwd'];
+                        $confirm = $_POST['confpasswd']; // Obtient la date et l'heure actuelles au format DATETIME
+                        $date_inscription = date("Y-m-d H:i:s");
+                        include "DATA/include/config_BD.php";
 
                         // Vérification de l'unicité de l'email dans la base de données
                         $sql_check_infos = "SELECT * FROM USERS WHERE email='$email' OR  (nom_user = '$nom_user' AND prenom_user= '$prenom_user') OR passwd='$passwd'";
@@ -76,36 +69,44 @@
                             echo "<p style='padding:5px 10px; font-size: 15px; color:black; background-color: #ffffff; background: blur(7); font-weight: bold;'>L'adresse e-mail et les informations sont déjà utilisée.<br> Veuillez choisir une autre adresse e-mail et d'autre information.</p>";
 
                         }else{
-                             // Vérification de la longueur du mot de passe
-                        if (strlen($passwd) < 8) {
-                            echo "<style>
-
-                        </style>";
-                            echo "<p style=' font-size: 15px;color:black; background-color: #ffffff88; background: blur(7);'>Le mot de passe doit comporter au moins 8 caractères.</p><br>";
-
-                        }
-                        // Vérification de la complexité du mot de passe (par exemple, au moins une lettre majuscule et un chiffre)
-                        if (!preg_match('/[A-Z]/', $passwd) || !preg_match('/[0-9]/', $passwd)) {
-                            echo "<style>
+                            /*verification si le matricule contient au moins 8 chiffres*/
+                            if (strlen($matricule) < 8) {
+                                echo "<style>
+    
+                            </style>";
+                                echo "<p style=' font-size: 15px;color:black; background-color: #ffffff88; background: blur(7);'>Le matricule doit comporter au moins 8 chiffre.</p><br>";
+    
+                            }
+                 
+                                // Vérification de la longueur du mot de passe
+                            if (strlen($passwd) < 8) {
+                                echo "<style>
 
                             </style>";
-                            echo "<p style=' font-size: 15px;color:black; background-color: #ffffff88; background: blur(7);'>Le mot de passe doit contenir au moins une lettre majuscule et un chiffre.</p><br>";
+                                echo "<p style=' font-size: 15px;color:black; background-color: #ffffff88; background: blur(7);'>Le mot de passe doit comporter au moins 8 caractères.</p><br>";
 
+                            }
+                            // Vérification de la complexité du mot de passe (par exemple, au moins une lettre majuscule et un chiffre)
+                            if (!preg_match('/[A-Z]/', $passwd) || !preg_match('/[0-9]/', $passwd)) {
+                                echo "<style>
+
+                                </style>";
+                                echo "<p style=' font-size: 15px;color:black; background-color: #ffffff88; background: blur(7);'>Le mot de passe doit contenir au moins une lettre majuscule et un chiffre.</p><br>";
+
+                            }
+                            $filieres = array("ia", "gl", "si", "im", "seiot"); // Tableau des filières disponibles (en minuscules)
+
+                            $filliere = strtolower($filliere); //mettre la filliere en miniscule
+
+                            // Vérification si la filière indiquée est valide
+                            if (!in_array($filliere, $filieres)) {
+                                echo 'filliere invalide veillez entrer un filliere entre ("ia", "gl", "si", "im", "seiot")';
+                            }
+                            require "traitement_ins.php";
                         }
-                        $filieres = array("ia", "gl", "si", "im", "seiot"); // Tableau des filières disponibles (en minuscules)
-
-                        $filliere = strtolower($filliere); //mettre la filliere en miniscule
-
-                        // Vérification si la filière indiquée est valide
-                        if (!in_array($filliere, $filieres)) {
-                            echo 'filliere invalide veillez entrer un filliere entre ("ia", "gl", "si", "im", "seiot")';
-                        }
-                        require "traitement_ins.php";
-                        }
-
                     }
                 ?>
-                <p>vous êtes dejà inscrit ?<a href="index.php">connexion</a></p>
+                <p class="text">vous êtes dejà inscrit ?<a href="index.php" class="text-white">connexion</a></p>
             </div>
         </div>
     </div>

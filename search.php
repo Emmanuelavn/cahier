@@ -60,7 +60,6 @@ $conn->close();
     background-color: #ffff;
     border-radius: 20px;
     max-width: 300px;
-    position: relative;
     transition: all 0.5s;
 }
 .card-rech h1{

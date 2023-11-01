@@ -1,0 +1,186 @@
+
+/*importation font familly*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+@font-face {
+    font-family: "ezeetest";
+    src: url('ASSETS/chart-graphique/ezeetest-exo-2-bold.ttf') format('truetype');
+}
+/*Animation keyframe*/
+
+/* slider horizontal  */
+@keyframes animation_slider_horizontal {
+
+    0%,
+    20% {
+        transform: translateX(0);
+    }
+
+    25%,
+    40% {
+        transform: translateX(-100%);
+    }
+
+    50%,
+    70% {
+        transform: translateX(-200%);
+    }
+
+    75%,
+    95% {
+        transform: translateX(-300%);
+    }
+
+    100% {
+        transform: translateX(-400%);
+    }
+}
+
+/*root*/
+
+
+* {
+    margin: 0;
+}
+
+a {
+    cursor: pointer;
+    color: var(--color-white);
+    text-decoration: none !important;
+}
+
+li {
+    list-style: none !important;
+}
+
+body {
+    position: relative;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--main-FontFam);
+}
+
+.body{
+    position: relative;
+    margin: 10px 0px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container_form{
+    padding: 30px 0px;
+    background-color:var(--main-color);
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height:min-content;
+    position: absolute;
+    bottom: 5em;
+}
+.container_form form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+    text-align: center;
+}
+.container_form form textarea{
+    border-radius: 20px;
+    width: 100%;
+    height: 40px;
+    text-align: center;
+}
+.container_form form button{
+    font-weight: bold;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    outline: none;
+    border:none;
+    border-radius: 20px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    background-image: var(--color-white);
+    font-size: 1em;
+    letter-spacing: 0.1rem;
+}
+.conteneur-horizontal {
+color:rgb(212, 175, 55);
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    /* La hauteur souhaitée de votre section horizontale */
+    overflow-y: scroll;
+    /* Permet le défilement horizontal */
+    white-space: nowrap;
+    /* Empêche le saut de ligne dans le contenu */
+}
+
+.contenu-horizontal { 
+    width: auto;
+    /* Largeur du contenu (plus grande que le conteneur) */
+    white-space: nowrap;
+    /* Empêche le saut de ligne dans le contenu */
+    display: flex;
+    flex-direction: column-reverse;
+    align-items:center;
+    justify-content: space-around;
+    
+    padding: 0% 10%;
+}
+.form_commentaire{
+    margin: 30px 0px;
+    display: flex;
+    justify-content: space-between;
+    background-color:#f2f3f4;
+    border-radius: 8px;
+    box-shadow: 0px 6px 10px rgba(0,0,0,.1);
+    padding: 10px 20px;
+    width: 100%;
+}
+.post{
+    margin-top: 50px;
+    text-align: center;
+    border: solid 2px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.post textarea{
+    font-size: var(--size-text);
+    text-align: center;
+    padding-top: 20px;
+    border: solid 1px;
+    border-radius: 20px;
+    width:80%;
+}
+.container_post{
+    padding: 54px 0px;
+    width: 70%;
+}
+.btn_repondre{
+    cursor: pointer;
+    font-weight: bold;
+    background-color: var(--main-color);
+    color: var(--color-white);
+    padding: -10px 10px;
+    border-radius: 10px;
+}
+.container-btnlike{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: aqua;
+    width: 50%;
+}

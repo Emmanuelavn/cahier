@@ -1,23 +1,44 @@
+/*importation font familly*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
+
+@font-face {
+    font-family: "ezeetest";
+    src: url('ASSETS/chart-graphique/ezeetest-exo-2-bold.ttf') format('truetype');
+}
+
+/*root*/
 :root {
-    --font-body: 'Poppins Medium', sans-serif;
-    --size-nav-Title: 50px;
-    --size-nav-link: 19px;
-    --size-Title: 60px;
-    --nav-height: 70px;
-    --nav-color: #ffffff;
+    --logo-fontFam: 'ezeetest' sans-serif;
+    --main-FontFam: 'Roboto', sans-serif;
+    --Montserrat-FontFam: 'Montserrat', sans-serif;
+    --Inter-FontFam: 'Inter', sans-serif;
+    --size-nav-Title: 35px;
+    --input-text-Fontsize: 1em;
+    --size-Title: 2em;
+    --size-text: 1.1em;
+    --size-link: 1.3em;
+    --size-logo: 6.5em;
+    --size-logo-name: 1.5em;
+    --size-btn: 1.2em;
+    --size-nomUser: 1.5em;
+    --welcom-size: 9em;
+    --img-profile: 40px;
     --main-color: #0f3054;
     --second-color: #89939E;
     --third-color: #000000;
     --background-color: #FFFFFF;
     --text-color: #222;
     --form-color: #f0f8ff;
-    --whrite-color: #ffffff;
-    --size-text: 30px;
-    --text-width: 800px;
-    --champ_saisie_height: 45px;
-    --champ_saisie_width: 300px;
+    --color-white: #ffffff;
+    --champ_saisie_width: 20vw;
+    --champ_saisie_height:45px;
+    --svg-group-width: 660px;
+    --svg-group-height: 479px;
 }
-
 @keyframes animation_title {
     0% {
         transform-origin: inherit;
@@ -29,59 +50,67 @@
     }
 }
 
-/* slider horizontal  */
-
-@keyframes animation_slider_horizontal {
-
-    0%,
-    20% {
-        transform: translateX(0);
-    }
-
-    25%,
-    40% {
-        transform: translateX(-100%);
-    }
-
-    50%,
-    70% {
-        transform: translateX(-200%);
-    }
-
-    75%,
-    95% {
-        transform: translateX(-300%);
-    }
-
-    100% {
-        transform: translateX(-400%);
-    }
-}
-
 * {
     padding: 0%;
     margin: 0%;
 }
+
+a{
+    padding: 10px;
+}
+
 html, body {
-    font-family: var(--font-body);
-    width:100vw;
+    font-family: var(--main-FontFam);
+    width: 100vw;
     height: 100%;
     overflow: hidden;
     object-fit: cover;
     list-style: none;
     text-decoration: none;
-    color: var(--whrite-color);
-  }
+    background-color: transparent;
+
+}
+/*class de text*/
+.title{
+    font-size: var(--size-Title);
+    font-weight: bold;
+    font-family: var(--Montserrat-FontFam);
+}
+.text-white{
+    color: var(--color-white)
+}
+.text{
+    font-size: var(--size-text);
+}
+.text-black{
+    color: var(--third-color);
+}
+.bg-white{
+    background-color: var(--color-white);
+}
+.bg-main{
+    background-color: var(--main-color);
+}
+.font_montserrat{
+    font-family: var(--Montserrat-FontFam);
+}
+.font_robotto{
+    font-family: var(--main-FontFam);
+}
+
 .navbar {
     position: fixed;
-    background-color: var(--nav-color);
+    background-color:transparent;
+    backdrop-filter: blur(7px);
+    color: var(--third-color);
     background: blur(7);
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     height: var(--nav-height);
+    padding-left: 200px;
+    height: 60px;
     width: 100vw;
-    box-shadow: 0px 0px 20px var(--text-color);
 }
 
 .navbar h1 {
@@ -99,12 +128,13 @@ html, body {
 }
 
 .navbar h1 img {
-    height:var(--size-nav-Title);
+    height: var(--size-nav-Title);
 }
+
 
 .navbar h1 span {
     position: relative;
-    color: var(--text-color);
+    color: var(--third-color);
     font-weight: 900;
     display: block;
     overflow: hidden;
@@ -113,13 +143,13 @@ html, body {
 }
 
 .btn_about {
-    border-radius: 16px;
+    border-radius: 15px;
     background-color: var(--main-color);
-    color: var(--whrite-color);
-    padding: 10px 20px;
+    color: var(--color-white);
+    padding: 15px 25px;
     text-decoration: none;
     font-weight: bold;
-    font-size: var(--size-nav-link);
+    font-size: calc((--size-nav-link)*1);
     transition: all 0.4s;
 }
 
@@ -134,74 +164,40 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
+    justify-content: space-around;
     align-items: center;
+    color: var(--color-white)
 }
-
-.background {
+.about_link{
     position: absolute;
-    width: 100vw;
-    height: 100%;
+    bottom: 35px;
+    left:35vw;
 }
-
-.background img {
-    object-fit: cover;
-    width: 100vw;
-    height: 100%;
-}
-
-.slider_container {
-    width: 100vw;
-    height: 100%;
-    overflow: hidden;
-}
-
-.slider {
+.container-left{
+    background-color: var(--color-white);
+    padding: 0% 30px;
     display: flex;
-    animation: animation_slider_horizontal 70s ease-in-out infinite;
-}
-
-.slider img {
-    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    height: 100%;
 }
 
 .container-rigth {
-    position: absolute;
+    padding-top: 50px;
+    box-shadow: 1px 1px 20px #222;
+    background-color: var(--main-color);
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     list-style: none;
     text-decoration: none;
-}
-
-.container-rigth {
-    width: 100%;
-    align-self: center;
-    justify-self: center;
-    margin-top: 0%;
-    margin-right: 10px;
-    z-index: 100px !important;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-
-}
-
-.container-rigth::before {
-    font-family: var(--font-Title);
-    text-align: center;
-    border: solid 0.1px;
-    border-radius: 20px;
-    padding: 10px 20px;
-    letter-spacing: 1.5px;
-    white-space: 10px;
-    height: auto;
-    font-size: var(--size-text);
-    max-width: var(--text-width);
-    background-color: var(--main-color);
-    background: blur(10);
-    content: "Accédez à des milliers de cours, exercices et épreuves d'examens passés en un seul clic ! Améliorez vos compétences et réussissez vos examens avec Ezeetest !!.";
+    margin: 0%;
+    height: 100%;
+    width: 60%;
 }
 
 .form-container {
@@ -237,21 +233,21 @@ html, body {
 .form-container p {
     border-radius: 20px;
     letter-spacing: 1px;
-    font-size: var(--size-nav-link);
     font-weight: bold;
 }
 
 .form-container .champ_saisie {
+    font-family: var(--Inter-FontFam);
+    font-size: var(--input-text-Fontsize);
     cursor: pointer;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     height: var(--champ_saisie_height);
     width:var(--champ_saisie_width);
     border-radius: 20px;
-    font-size: var(--size-nav-link);
     padding-left: 50px;
     transform: scale(0);
     animation: 0.4s animation_title forwards cubic-bezier(1, -0.16, .38, 1.1);
-    border-color: var(--main-color);
+    border: none;
 }
 
 .form-container .champ_saisie:hover {
@@ -260,12 +256,11 @@ html, body {
 
 .form-container .champ_saisie:focus {
     font-size: 19px;
-    border: var(--text-color) 10px;
+    border: none;
     scale: 1.2;
     transform: translateY(-10px);
     box-shadow: 0px 0px 10px var(--main-color);
     transition: all 0.5s;
-    border: var(--main-color);
 }
 
 .form-container .boutton_soumettre {
@@ -275,12 +270,10 @@ html, body {
     border-radius: 15px;
     height: auto;
     width: auto;
-    font-size: var(--size-nav-link);
     font-weight: bold;
     letter-spacing: 1px;
     text-align: center;
-    color: var(--whrite-color);
-    background-color: var(--main-color);
+    font-size: var(--size-btn);
     animation-delay: 0.9s;
     transition: all 0.1s;
     border: none;
@@ -299,269 +292,3 @@ html, body {
 
 /* responsive */
 
-
-/* Styles pour smartphones en mode portrait */
-@media screen and (max-width: 360px) {
- /* Vos styles CSS ici */
- :root {
-    --font-Title: 'Roboto', sans-serif;
-    --font-link: 'Poppins Medium', sans-serif;
-    --size-nav-Title: 10px;
-    --size-nav-link: 15px;
-    --size-Title: 60px;
-    --main-color: #0f3054;
-    --second-color: #89939E;
-    --third-color: #000000;
-    --background-color: #FFFFFF;
-    --text-color: #222;
-    --form-color: #f0f8ff;
-    --whrite-color: #ffffff;
-    --size-text: 20px;
-    --text-width: 100px;
-    --champ_saisie_width:400px;
-    --champ_saisie_width:450px;
-    --champ_saisie_height: 65px;   
-} 
-body{
-    background-image: url("../IMG/pexels-rdne-stock-project-7413936.jpg");
-    object-fit: cover;
-    background-size: cover;
-    background-position: center;
-    color: var(--third-color);
-}
-.background{
-    display: none;
-}
-.slider_container{
-display: none;
-}
-.container-rigth::before{
-    display: none;
-}
-.form-container form {
-height: 100%;
-width: 100%;
-}
-
-}
-@media screen and (max-width: 480px) {
-    /* Vos styles CSS ici */
-    :root {
-        --font-Title: 'Roboto', sans-serif;
-        --font-link: 'Poppins Medium', sans-serif;
-        --size-nav-Title: 1.6em;
-        --size-nav-link: 1em;
-        --size-Title: 2.5em;
-        --main-color: #0f3054;
-        --second-color: #89939E;
-        --third-color: #000000;
-        --background-color: #FFFFFF;
-        --text-color: #222;
-        --form-color: #f0f8ff;
-        --whrite-color: #ffffff;
-        --size-text: 15px;
-        --text-width: 300px;
-        --champ_saisie_width:230px;
-        --champ_saisie_height: 35px;    } 
-    body{
-        background-image: url("../IMG/pexels-rdne-stock-project-7413936.jpg");
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-        color: var(--third-color);
-    }
-    .navbar{
-        height: 3em !important;
-    }
-    .background{
-        display: none;
-    }
-   .slider_container{
-    display: none;
-   }
-   .container{
-    margin-top: 0%;
-   }
-   .btn_about {
-    padding: 7px 10px;
-}
-
-  }
-  @media screen and (max-width: 500px){
-
-  }
-
-  /* Styles pour smartphones en mode paysage */
-@media screen and (max-width: 757px) and (orientation: landscape) {
-    /* Vos styles CSS ici */
-    :root {
-        --font-body: 'Poppins Medium', sans-serif;
-        --size-nav-Title: 50px;
-        --size-nav-link: 19px;
-        --size-Title: 50px;
-        --nav-height: 70px;
-        --nav-color: #ffffff;
-        --main-color: #0f3054;
-        --second-color: #89939E;
-        --third-color: #000000;
-        --background-color: #FFFFFF;
-        --text-color: #222;
-        --form-color: #f0f8ff;
-        --whrite-color: #ffffff;
-        --size-text: 30px;
-        --text-width: 800px;
-        --champ_saisie_width:250px;
-        --champ_saisie_height: 40px;
-    }
-    body{
-        background-image: url("../IMG/pexels-rdne-stock-project-7413936.jpg");
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-        color: var(--third-color);
-    }
-    .background{
-        display: none;
-    }
-   .slider_container{
-    display: none;
-   }
-    .navbar ul {
-        display: none;
-    }
-    .container-rigth::before{
-        display: none;
-    }
-  } 
-
-  /* Styles pour tablettes en mode portrait */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    /* Vos styles CSS ici */
-    :root {
-        --font-Title: 'Roboto', sans-serif;
-        --font-link: 'Poppins Medium', sans-serif;
-        --size-nav-Title: 4em;
-        --size-nav-link: 20px;
-        --size-Title: 50px;
-        --main-color: #0f3054;
-        --second-color: #89939E;
-        --third-color: #000000;
-        --background-color: #FFFFFF;
-        --text-color: #222;
-        --form-color: #f0f8ff;
-        --whrite-color: #ffffff;
-        --size-text: 15px;
-        --text-width: 300px;
-        --champ_saisie_width:350px;
-        --champ_saisie_height: 45px;
-    }
-    body{
-        background-image: url("../IMG/pexels-rdne-stock-project-7413936.jpg");
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-        color: var(--third-color);
-    }
-    
-    .background{
-        display: none;
-    }
-   .slider_container{
-    display: none;
-   }
-    .container-rigth::before{
-        display: none;
-    }
-  }   
-  @media screen and (max-width: 900px){
-    .container-rigth::before{
-        display: none;
-    }
-    .container-rigth{
-        margin-top: 5% !important;
-    }
-  }
-
-  /* Styles pour tablettes en mode paysage */
-@media screen and (min-width: 1024px) and (max-width: 1365px) and (orientation: landscape) {
-    /* Vos styles CSS ici */
-    
-    :root {
-        --font-body: 'Roboto', sans-serif;
-        --size-nav-Title: 40px;
-        --size-nav-link: 19px;
-        --size-Title: 50px;
-        --nav-height: 70px;
-        --nav-color: #ffffff;
-        --main-color: #0f3054;
-        --second-color: #89939E;
-        --third-color: #000000;
-        --background-color: #FFFFFF;
-        --text-color: #222;
-        --form-color: #f0f8ff;
-        --whrite-color: #ffffff;
-        --size-text: 15px;
-        --text-width: 500px;
-        --champ_saisie_width:290px;
-        --champ_saisie_height: 40px;
-    }
-
-    body{
-        background-image: url("../IMG/pexels-rdne-stock-project-7413936.jpg");
-        object-fit: cover;
-        background-size: cover;
-        background-position: center;
-        color: var(--third-color);
-    }
-    .background{
-        display: none;
-    }
-   .slider_container{
-    display: none;
-   }
-
-    .navbar {
-        height: 50px;
-    }
-
-    .champ_saisie {
-     padding-left:30px;
-    }
-    .container-rigth::before{
-       display: none;
-    }
-    .container-rigth{
-        margin-top: 50px !important;
-    }
-    .container h1{
-        margin-bottom: 10px;
-    }
-  }
-  /* Styles pour ordinateurs de bureau et ordinateurs portables */
-@media screen and (min-width: 1366px) and (max-width: 1919px) {
-    /* Vos styles CSS ici */
-    body{
-        margin: 0px;
-    }
-    .container-rigth{
-        margin-top: 80px !important;
-    }
-    .container-rigth p{
-        margin-top:0px !important;
-        padding: 0px !important ;
-    }
-  }
-  /* Styles pour grands écrans (2K et 4K) */
-@media screen and (min-width: 1920px) {
-    /* Vos styles CSS ici */
-  }
-  /* Styles pour les écrans de télévision HD (720p) */
-@media screen and (min-width: 1280px) and (min-height: 720px) {
-    /* Vos styles CSS ici */
-  }
-  
-  /* Styles pour les écrans de télévision Full HD (1080p) */
-  @media screen and (min-width: 1920px) and (min-height: 1080px) {
-    /* Vos styles CSS ici */
-  }
-  
