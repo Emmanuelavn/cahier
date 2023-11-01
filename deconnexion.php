@@ -497,7 +497,7 @@ a:hover {
     .text-logo {
         font-size: 1em;
         }
-}+++++++++++++++++++++
+}
     </style>
 </head>
 
