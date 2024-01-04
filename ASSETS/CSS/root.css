@@ -1,0 +1,21 @@
+
+/* Pour les navigateurs basés sur WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 5px; /* Largeur de la scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* Couleur de la poignée de la scrollbar */
+  }
+  
+  /* Pour Internet Explorer uniquement */
+  body {
+    scrollbar-base-color: #333; /* Couleur de fond de la scrollbar */
+    scrollbar-face-color: #666; /* Couleur de la face de la scrollbar */
+    scrollbar-arrow-color: #fff; /* Couleur de la flèche de la scrollbar */
+    scrollbar-3dlight-color: #999; /* Couleur de la lumière 3D */
+    scrollbar-shadow-color: #555; /* Couleur de l'ombre de la scrollbar */
+    scrollbar-highlight-color: #777; /* Couleur du surlignage de la scrollbar */
+    scrollbar-darkshadow-color: #444; /* Couleur de l'ombre sombre de la scrollbar */
+  }
+  

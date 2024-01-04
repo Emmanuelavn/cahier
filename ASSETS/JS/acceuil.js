@@ -2,7 +2,8 @@
 const navlink = document.querySelector(".link_container");
 const body = document.querySelector("#body");
 const bouttonMenu = document.querySelector("#boutton_menu");
-const bouttonDiscussion = document.querySelector("#menudiscussion");
+const bouttonDiscussion = document.querySelector
+("#menudiscussion");
 const bouttonIa = document.querySelector("#menuia");
 const navbar = document.querySelector("#navbar");
 
@@ -15,6 +16,12 @@ burgeur.addEventListener("click", () => {
   body.classList.toggle("burgeuractive");
 });
 
+const link = document.querySelector("#link");
+link.addEventListener("click", () => {
+  burgeur.classList.remove("menu_active");
+  navlink.classList.remove("burgeuractive");
+  body.classList.remove("burgeuractive");
+});
 
 
 //action menu
@@ -49,3 +56,5 @@ window.addEventListener("scroll", () => {
 
   prevScrollPos = currentScrollPos;
 });
+
+

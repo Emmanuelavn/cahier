@@ -29,29 +29,15 @@
         die("Informations de l'utilisateur non trouvées.");
     }
 
+// Obtenez la première lettre du nom de l'utilisateur (par exemple, 'Smith' devient 'S')
+
+$premiereLettreNom = strtoupper(substr($nom_utilisateur, 0, 1));
+
+// Définissez le répertoire où se trouvent les images de profil
+$repertoireImages = "ASSETS/IMG/profil/bleu/";
+
+// Construisez le chemin complet de l'image de profil
+$cheminImageProfil = $repertoireImages . $premiereLettreNom . ".png";
+
+
 ?> 
-<?php
-// Assurez-vous d'avoir correctement configuré la connexion à la base de données.
-include "DATA/include/config_BD.php";
-
-// Récupérez l'ID de l'utilisateur actuel (vous devez l'avoir stocké dans la variable $id_user)
-// Remplacez par l'ID de l'utilisateur approprié
-
-// Sélectionnez les informations de la table USERS_infosup pour l'utilisateur actuel
-$sql = "SELECT about, img_profile FROM USERS_infosup WHERE id_user = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "i", $id_user);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $about, $img_profile);
-
-
-
-// Récupérez les valeurs
-mysqli_stmt_fetch($stmt);
-
-// Fermez la requête
-mysqli_stmt_close($stmt);
-
-// Fermez la connexion à la base de données
-mysqli_close($conn);
-?>

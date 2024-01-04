@@ -155,10 +155,11 @@ body {
 }
 /* navbar et lien */
 .navbar {
+    z-index: 1;
     background-color:var(--main-color);
     color: var(--color-white);
     height:4rem;
-    width: 100%;
+    width: 100vw;
     flex-wrap: wrap;
     display: flex;
     align-items: center;
@@ -394,21 +395,19 @@ a:hover {
     .mobile-afichage{
         display: block;
     }
+    .img-profil{
+        display: none;
+    }
     .link_container{
         opacity: 0;
-        display: none;
         background-color: #0f3054;
-        left: -1000;
-        top: 90px;
-        width: 100%;
-        border-bottom-left-radius: 50px;
-        border-bottom-right-radius: 50px;
-        padding:20px 0px;
-        height: auto;
+        top: 0px;
+        height: 100vh;
+        width: 100vw;
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column-reverse;
         align-items: center;
-        justify-content: center;
+        gap: 5em;
         margin:auto ;
         position: absolute;
         transform: translateX(-1000px);
@@ -418,7 +417,7 @@ a:hover {
         opacity: 1;
         left: 0;
         transform:inherit;
-        display: flex;
+        overflow: hidden;
     }
     #header{
         display: flex;
@@ -455,8 +454,7 @@ a:hover {
     </style>
 </head>
 
-<body>
-    
+<body id="body">
     <nav class="navbar">
         <h1><img class="logo" src="ASSETS/chart-graphique/ezeetest-website-favicon-white.png" alt="logo-Ezeetest"
           srcset=""><span class="text-logo">Ezeetest</span></h1>
@@ -465,7 +463,7 @@ a:hover {
             <li class="link"><a href="about.html">a propos</a></li>
             <li class="link"><a href="acceuil.php">acceuil</a></li>
         </ul>
-      <img  class="img_rond img-profil" src="<?php echo $img_profile; ?>" alt="Image de profil">
+      <img  class="img_rond img-profil" src="<?php echo $cheminImageProfil; ?>" alt="Image de profil">
       <div class="menu-burgeur mobile-afichage">
         <span></span>
         <span></span>
@@ -483,7 +481,7 @@ a:hover {
         burgeur.addEventListener("click", () => {
             burgeur.classList.toggle("menu_active");
             navlink.classList.toggle("burgeuractive");
-            //body.classList.toggle("burgeuractive");
+            body.classList.toggle("burgeuractive");
             console.log("burgeur");
         });
 

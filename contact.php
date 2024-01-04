@@ -23,7 +23,7 @@ if (isset($_POST["envoyer_mail"])) {
     $mail->Host = 'smtp.gmail.com'; // Serveur SMTP
     $mail->SMTPAuth = true;
     $mail->Username = 'YOUR_EMAIL@example.com'; // Votre adresse e-mail
-    $mail->Password = 'kwih bwsw vnhs xzdv'; // Votre mot de passe e-mail
+    $mail->Password = 'YOUR_MAIL_APP_PASSWORD'; // Votre mot de passe e-mail
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;;
     $mail->Port = 587;
 

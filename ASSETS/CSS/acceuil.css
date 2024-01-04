@@ -1,3 +1,5 @@
+@import url('./root.css');
+
 /*importation font familly*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
@@ -144,7 +146,6 @@ body {
 }
 
 .font_montserrat {
-    margin: 0%;
     font-family: var(--Montserrat-FontFam) !important;
     /* montserrat */
 }
@@ -242,6 +243,7 @@ body {
 
 /* navbar et lien */
 .navbar {
+    z-index: 1;
     top: 0;
     left: 0;
     position: fixed;
@@ -301,18 +303,6 @@ body {
 
 /*effet hover des liens de la navbar*/
 
-.link_container .link a::after {
-    content: "";
-    position: absolute;
-    background-color: var(--color-white);
-    height: 9px;
-    top: 0px;
-    width: 0;
-    left: 0%;
-    bottom: 0px;
-    transition: all 0.3s;
-}
-
 .link_container .link a:focus:after {
     left: 1;
     width: 100%;
@@ -324,6 +314,7 @@ body {
 }
 .link_container .link:nth-child(1) a:hover{
     background-color:transparent;
+    scale: 1;
 }
 .text-logo {
     cursor: pointer;
@@ -448,6 +439,7 @@ body {
     font-weight: bold;
     background-color: transparent;
     border: solid 2px var(--main-color);
+    
 }
 
 .header_left button:hover {
@@ -985,32 +977,51 @@ td p {
 
 /*footer*/
 #footer {
-    padding-top: 200px;
     position: relative;
     background-color: #0f3054;
     width: 100%;
-    height: 300px;
+    height: 50vh;
     color: var(--color-white);
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     align-items:flex-start;
     justify-content: space-around;
 }
-#wave{
-    top: -100px;
-    transform: rotate(180deg);
-    position: absolute;
+.footer-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+.link-footer{
+    letter-spacing: 1px;
+    align-self: center;
+    text-decoration: underline;
+}
+.link-footer span{
+    display: block;
+    padding: 1px;
+    transition: all 0.9s;
+}
+.link-footer:hover .link-footer span{
+    transform: translateX(20px);
+}
+.copyright{
+    margin-top: 2%;
+    text-align: right;
 }
 #footer p {
-    padding: 10px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     align-self: center;
 }
-
+.contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+}
 .logo_footer {
     font-size: 2em;
 }
@@ -1115,6 +1126,9 @@ td p {
         height: 100vh;
         transition: all 0.5s ease-in-out;
     }
+    .img-mobile-none{
+        display: none;
+    }
 
     .link {
         overflow: visible;
@@ -1202,6 +1216,11 @@ td p {
 }
 
 /* Pour les smartphones en mode portrait (largeur max : 767px) */
+@keyframes menu-mobileAnime {
+    100%{
+        transform: inherit;
+    }
+}
 @media screen and (max-width: 900px) {
 
     /*  pour les smartphones en mode portrait ici */
@@ -1235,20 +1254,22 @@ td p {
     }
     /*navbar*/
     .link_container {
-        opacity: 0;
         position: absolute;
         top: 0%;
         left: 0%;
         text-align: center;
-        background-color: #ffffffea;
+        background-color:var(--color-white);
         backdrop-filter: blur(9px);
         display: none;
         width: 100%;
         height: 100vh;
         transition: all 0.5s ease-in-out;
+        transform: translateX(-1000px);
     }
 
-
+    .img-mobile-none{
+        display: none;
+    }
     .link {
         overflow: visible;
         transform: translateY(10vh);
@@ -1256,18 +1277,20 @@ td p {
     }
 
     .link a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
         padding: 2% 0%;
         overflow: visible;
-    }
-
+    } 
     .link a::after {
         display: none;
     }
 
     .link_container.burgeuractive {
         display: block;
-        opacity: 1;
-        transition: all 0.5s ease-in-out;
+        animation: menu-mobileAnime 0.9s ease-in-out forwards;
     }
 
     .burgeuractive {
@@ -1396,9 +1419,7 @@ td p {
         gap: 1em;
     }
 
-    .svg {
-        width: 100%;
-    }
+   
 
     .header_left button {
         border-radius: 10px;
@@ -1450,7 +1471,7 @@ td p {
         --input-text-Fontsize: -0.1em;
         --size-Title: 2em;
         --size-text: 1em;
-        --size-link: 1em;
+        --size-link: 2.5em;
         --size-logo: 5em;
         --size-logo-name: 1.5em;
         --size-btn: 1.2em;
@@ -1471,11 +1492,7 @@ td p {
     .btn{
         width: 150px;
     }
-    .text-shadow {
-        color: rgb(240 248 255 / 81%);
-        ;
-    }
-
+    
     .input_radius-12 {
         border-radius: 20px;
     }
@@ -1569,7 +1586,7 @@ td p {
     .menu-burgeur span:nth-child(2) {
         position: absolute;
         right: 0;
-        width: 50%;
+        width: 80%;
         height: 4px;
         background-color: var(--main-color);
 
@@ -1581,7 +1598,7 @@ td p {
         position: absolute;
         content: "";
         right: 0;
-        width: 70%;
+        width: 100%;
         height: 4px;
         background-color: var(--main-color);
         transition: transform 0.5s ease-in-out;
@@ -1693,6 +1710,9 @@ td p {
         text-align: center;
         padding: 0%;
     }
+    .conteneur-horizontal {
+        height: 100vh;
+    }
 
     #table_ec {
         display: none;
@@ -1716,11 +1736,16 @@ td p {
         border: none;
         box-shadow: 0px 0px 3px #222;
     }
-    #wave{
-        top: -2px;
-    }
     #footer{
-        height: 180px;
+        display: flex;
+        justify-content: space-between;
+        height:50vh;
+    }
+    .footer-container{
+        gap: 2em;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 
 }
@@ -1736,7 +1761,7 @@ td p {
         --input-text-Fontsize: -0.1em;
         --size-Title: 1.5em;
         --size-text: 1em;
-        --size-link: 1em;
+        --size-link: 2em;
         --size-logo: 3.5em;
         --size-btn: 1.2em;
         --size-logo-name: 1.2em;
@@ -1822,10 +1847,9 @@ td p {
     .menu-burgeur span:nth-child(2) {
         position: absolute;
         right: 0;
-        width: 60%;
+        width: 90%;
         height: 4px;
         background-color: var(--main-color);
-
         transition: background-color 0.5s ease-in-out;
     }
 
@@ -1833,7 +1857,7 @@ td p {
     .menu-burgeur span:nth-child(3) {
         position: absolute;
         content: "";
-        width: 60%;
+        width: 90%;
         height: 4px;
         background-color: var(--main-color);
         transition: transform 0.5s ease-in-out;
@@ -1855,5 +1879,11 @@ td p {
     }
 
     /*Contact*/
- 
+    #footer{
+        height: 70vh;
+    }
+    .footer-container{
+        flex-direction: row-reverse;
+        flex-direction: column;
+    }
 }

@@ -17,9 +17,6 @@ if (isset($_SESSION['email_or_username'])) {
 <head>
     <meta charset="UTF-8">
     <meta e-width, initial-scale="1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ASSETS/CSS/connexion.css">
     <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
     <title>connexion | Ezeetest</title>
@@ -48,7 +45,10 @@ if (isset($_SESSION['email_or_username'])) {
                     </h1>
                     <br>
                     <input class="champ_saisie" type="email" name="email" placeholder="Email : exmail@gmail" required>
-                    <input class="champ_saisie" type="password" name="passwd" placeholder="Password" required>
+                    <input id="passwd" class="champ_saisie" type="password" name="passwd" placeholder="Password" required>
+
+                    <img class="affmp"  src="https://img.icons8.com/emoji/48/eye-in-speech-bubble.png" alt="eye-in-speech-bubble" onclick="afficherMotDePasse()"/>
+
                     <input class="boutton_soumettre bg-white text-black" type="submit" name="ok" value="OK">
                     <br>
                 </form>
@@ -63,15 +63,28 @@ if (isset($_SESSION['email_or_username'])) {
 
                     if (!$result->num_rows == 1) {
                         // Authentification échouée, afficher un message d'erreur
-                        echo "<span style=' padding:0px 10px; font-weigh:bold; font-size: 35px; color:red; background-color:#FFFFFF;'> Adresse e-mail, nom d'utilisateur ou mot de passe incorrect.</span>";
+                        echo "<p style='padding:5px 10px; margin-buttom:10px; font-size: 15px; color:black; background-color: #ffffff; background-color:#FFFFFF;'> Adresse e-mail ou Identifient  incorrect.</p>";
                     }
                 }
                 ?>
+                <br>
+                <br>
                 <p class="text">Vous n'avez pas de compte ?<a href="inscription.php" class="text-white">inscription</a></p>
             </div>
 
         </div>
     </div>
+    <script>
+
+        function afficherMotDePasse() {
+            var x = document.getElementById("passwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
     <!--script javascript <script src="ASSETS/JS/inscription.js"></script>-->
 
 </body>

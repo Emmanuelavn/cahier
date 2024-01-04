@@ -69,7 +69,7 @@ if (isset($_POST["ok"])) {
                     $mail->Host = 'smtp.gmail.com'; // Remplacez par le serveur SMTP de votre fournisseur de messagerie
                     $mail->SMTPAuth = true;
                     $mail->Username = 'YOUR_EMAIL@example.com'; // Remplacez par votre adresse email
-                    $mail->Password = 'kwih bwsw vnhs xzdv'; // Remplacez par votre mot de passe
+                    $mail->Password = 'YOUR_MAIL_APP_PASSWORD'; // Remplacez par votre mot de passe
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
@@ -120,7 +120,7 @@ if (isset($_POST["ok"])) {
 
     } else {
         
-        echo "Les mots de passe ne correspondent pas.<a style='color:blue;' href='index.php'>réesayer</a>";
+        echo "<p style='padding:5px 10px; margin-buttom:10px; font-size: 15px; color:black; background-color: #ffffff; background-color:#FFFFFF;'>Les mots de passe ne correspondent pas.<a style='color:blue;' href='index.php'>réesayer</a></p>";
     }
 }
 

@@ -49,33 +49,11 @@
     $conn->close();
     ?>
 
-<?php
-// Assurez-vous d'avoir correctement configuré la connexion à la base de données.
-include "DATA/include/config_BD.php";
-
-// Récupérez l'ID de l'utilisateur actuel (vous devez l'avoir stocké dans la variable $id_user)
-// Remplacez par l'ID de l'utilisateur approprié
-
-// Sélectionnez les informations de la table USERS_infosup pour l'utilisateur actuel
-$sql = "SELECT about, img_profile FROM USERS_infosup WHERE id_user = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "i", $id_user);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $about, $img_profile);
-
-// Récupérez les valeurs
-mysqli_stmt_fetch($stmt);
-
-// Fermez la requête
-mysqli_stmt_close($stmt);
-// Fermez la connexion à la base de données
-mysqli_close($conn);
-// Vous pouvez maintenant afficher ces informations dans votre page HTML
-?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="ASSETS/CSS/acceuil.css">
+    <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
     <title>Acceuil | Ezeetest</title>
 </head>
 
@@ -86,17 +64,17 @@ mysqli_close($conn);
             <a href="user.php" class="mobile_affichage profil_mobile"><img class="img_rond img-profil" src="<?php echo $img_profile; ?>" alt="image de profil" srcset=""></a>
             <h1><a href="acceuil.php"><img class="logo" src="ASSETS/IMG/ezeetest-low-resolution-logo-color-on-transparent-background.png" alt="logo-Ezeetest" srcset=""></a></h1>
             <ul class="link_container">
-                <li class="link"><a href="user.php"><img class="img_rond img-profil" src="<?php echo $img_profile; ?>" alt="image de profil" srcset=""></a></li>
                 <li class="link"><a href="deconnexion.php">deconnexion</a></li>
                 <li class="link"><a href="about.html">a propos</a></li>
-                <li class="link"><a href="#container_contact">Contact</a></li>
-                <li><img src="" alt="" srcset=""></li>
+                <li class="link"><a href="https://discord.com/channels/1174650025482145792/1174650025482145795">discord</a></li>
+                <li id="link" class="link"><a href="#container_contact">Contact</a></li>
             </ul>
+            <li class="img-mobile-none"><a href="user.php"><img class="img_rond img-profil" src="<?php echo $img_profile; ?>" alt="image de profil" srcset=""></a></li>
             <div class="menu-burgeur mobile_affichage">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </nav>
     <header id="header">
         <!--header contenue-->
@@ -105,7 +83,7 @@ mysqli_close($conn);
             <img class="mobile_logo mobile_affichage " src="ASSETS/chart-graphique/ezeetest-website-favicon-color.png" alt="logo-Ezeetest" srcset=""></a>
                 <div class="gap">
                     <div><span>Bienvenue <?php echo $prenom_utilisateur; ?></span></div>
-                        <p class="title font_montserrat">Sur votre plateforme éducative personnelle.</p>
+                        <p class="title font_montserrat">Vous ête sur votre plateforme éducative personnelle.</p>
                         <p class="text">Trouvez rapidement et facilement vos cours, documents  et épreuves pour maximiser votre réussite académique.</p>
                     <a href="#container_filtrage-donner" rel="noopener noreferrer"><button class="input_radius-12 btn">explorer</button></a>
                 </div>
@@ -1141,15 +1119,15 @@ mysqli_close($conn);
             <p class="text">Selectionner la licence voulu et cliquer sur le fichier rechercher</p>
             <form action="" method="POST" id="categorieForm" class="btn_container">
                 <select name="licence" id="choix_licence" class="input_radius-12 btn color_main">
-                    <option value="LICENCE_1">LICENCE_1</option>
-                    <option value="LICENCE_2">LICENCE_2</option>
-                    <option value="LICENCE_3">LICENCE_3</option>
-                </select>
+                <option value="LICENCE_1" <?php echo (isset($_POST['licence']) && $_POST['licence'] === 'LICENCE_1') ? 'selected' : ''; ?>>LICENCE_1</option>
+            <option value="LICENCE_2" <?php echo (isset($_POST['licence']) && $_POST['licence'] === 'LICENCE_2') ? 'selected' : ''; ?>>LICENCE_2</option>
+            <option value="LICENCE_3" <?php echo (isset($_POST['licence']) && $_POST['licence'] === 'LICENCE_3') ? 'selected' : ''; ?>>LICENCE_3</option>
+     </select>
                 <!--BOUTTON DE FORMULAIRE-->
                 <button class="button_categorie"><input class="input_radius-12 categorie" type="submit" name="categorie" value="cour"></button>
                 <button class="button_categorie"><input class="input_radius-12 categorie" type="submit" name="categorie" value="document"></button>
                 <button class="button_categorie"><input class="input_radius-12 categorie" type="submit" name="categorie" value="epreuve"></button>
-                <button class="button_categorie"><input class="input_radius-12 categorie" type="submit" name="categorie" value="video"></button>
+                <button class="button_categorie"><input class="input_radius-12 categorie" type="submit" name="categorie" value="emplois"></button>
 
             </form>
         </div>
@@ -1158,8 +1136,8 @@ mysqli_close($conn);
         <?php
         // Traitement du formulaire lorsque l'utilisateur soumet le choix de catégorie
         if (isset($_POST["licence"])) {
+            // recuperer la table  avec $_POST["licence"] ici
             $nom_table = $_POST["licence"];
-            // Utilisez $_POST["licence"] ici
         } else {
             // Traitez le cas où "licence" n'est pas défini
         }
@@ -1167,16 +1145,13 @@ mysqli_close($conn);
             // Récupérer la catégorie sélectionnée
         
             $categorie = $_POST["categorie"];
-            echo "<script>window.location.href = '#tableaux'</script>";
+            echo "<script>window.location.href = '#container_filtrage-donner'</script>";
             // Connexion à la base de données (assurez-vous de remplacer les informations de connexion)
             include "DATA/include/config_BD.php";
-            // Vérification de la connexion
-            if ($conn->connect_error) {
-                die("La connexion à la base de données a échoué : " . $conn->connect_error);
-            }
+
 
             // Requête SQL pour récupérer les données en fonction de la catégorie
-            $sql = "SELECT * FROM  $nom_table WHERE categorie_fichier = '$categorie' ORDER BY semestre ";
+            $sql = "SELECT * FROM  $nom_table WHERE categorie_fichier = '$categorie' ORDER BY semestre ASC, année_fichier DESC";
             $result = $conn->query($sql);
 
             // Afficher les données de la base de données en fonction du choix de catégorie
@@ -1205,58 +1180,58 @@ mysqli_close($conn);
                         </thead>
                         <tbody>
                             <?php while ($row = $result->fetch_assoc()) { ?>
-                                                        <tr>
-                                                            <td class="align-middle anim_hover">
-                                                                <p
-                                                                    class="bg-orange padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white  font-size20">
-                                                                    <img width="32" height="32"
-                                                                        src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/external-calendar-calendar-kmg-design-glyph-kmg-design-18.png"
-                                                                        alt="external-calendar-calendar-kmg-design-glyph-kmg-design-18" />
-                                                                    <?php echo $row['semestre']; ?>
-                                                                </p>
-                                                                <span class="margin-10px-top font-size14 text_table">
-                                                                    <?php echo $row['filliere']; ?>
-                                                                </span>
-                                                            </td>
-                                                            <td id="table_ue" class="anim_hover">
-                                                                <p
-                                                                    class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
-                                                                    <img width="40" height="40"
-                                                                        src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/40/external-student-studying-for-exams-isolated-on-a-white-background-school-bold-tal-revivo.png"
-                                                                        alt="external-student-studying-for-exams-isolated-on-a-white-background-school-bold-tal-revivo" />
-                                                                    <?php echo $row['nom_ue']; ?>
-                                                                </p>
-                                                                <span class="tex_opacity_anim"><?php echo $row['nom_ec']; ?></span>
-                                                            </td id="table_nomfichier">
-                                                            <td id="table_ec" >
-                                                                <span class="margin-10px-top font-size14 text_table">
-                                                                    <?php echo $row['nom_fichier']; ?>
-                                                                </span>
-                                                            </td>
+                                                                <tr>
+                                                                    <td class="align-middle anim_hover">
+                                                                        <p
+                                                                            class="bg-orange padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white  font-size20">
+                                                                            <img width="32" height="32"
+                                                                                src="https://img.icons8.com/external-kmg-design-glyph-kmg-design/32/external-calendar-calendar-kmg-design-glyph-kmg-design-18.png"
+                                                                                alt="external-calendar-calendar-kmg-design-glyph-kmg-design-18" />
+                                                                            <?php echo $row['semestre']; ?>
+                                                                        </p>
+                                                                        <span class="margin-10px-top font-size14 text_table">
+                                                                            <?php echo $row['filliere']; ?>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td id="table_ue" class="anim_hover">
+                                                                        <p
+                                                                            class="bg-purple padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
+                                                                            <img width="40" height="40"
+                                                                                src="https://img.icons8.com/external-tal-revivo-bold-tal-revivo/40/external-student-studying-for-exams-isolated-on-a-white-background-school-bold-tal-revivo.png"
+                                                                                alt="external-student-studying-for-exams-isolated-on-a-white-background-school-bold-tal-revivo" />
+                                                                            <?php echo $row['nom_ue']; ?>
+                                                                        </p>
+                                                                        <span class="tex_opacity_anim"><?php echo $row['nom_ec']; ?></span>
+                                                                    </td id="table_nomfichier">
+                                                                    <td id="table_ec" >
+                                                                        <span class="margin-10px-top font-size14 text_table">
+                                                                            <?php echo $row['nom_fichier']; ?>
+                                                                        </span>
+                                                                    </td>
     
-                                                            <td id="table_categorie">
-                                                                <p
-                                                                    class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
-                                                                    <img width="30" height="30"
-                                                                        src="https://img.icons8.com/sf-black-filled/30/bookmark.png" alt="bookmark" />
-                                                                    <?php echo $row['categorie_fichier']; ?>
-                                                                </p>
-                                                            </td>
-                                                            <td id="table_annee">
-                                                                <p
-                                                                    class="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
-                                                                    <img width="30" height="30"
-                                                                        src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/30/external-agenda-strategy-tanah-basah-glyph-tanah-basah.png"
-                                                                        alt="external-agenda-strategy-tanah-basah-glyph-tanah-basah" />
-                                                                    <?php echo $row['année_fichier']; ?>
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <p><a href="<?php echo $row['chemin_fichier']; ?>" target="_blank"><img width="26"
-                                                                            height="26" src="https://img.icons8.com/metro/26/download.png"
-                                                                            alt="download" />Voir le PDF</a></p>
-                                                            </td>
-                                                        </tr>
+                                                                    <td id="table_categorie">
+                                                                        <p
+                                                                            class="bg-green padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
+                                                                            <img width="30" height="30"
+                                                                                src="https://img.icons8.com/sf-black-filled/30/bookmark.png" alt="bookmark" />
+                                                                            <?php echo $row['categorie_fichier']; ?>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td id="table_annee">
+                                                                        <p
+                                                                            class="padding-5px-tb padding-15px-lr border-radius-5 margin-10px-bottom text-white   font-size20">
+                                                                            <img width="30" height="30"
+                                                                                src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/30/external-agenda-strategy-tanah-basah-glyph-tanah-basah.png"
+                                                                                alt="external-agenda-strategy-tanah-basah-glyph-tanah-basah" />
+                                                                            <?php echo $row['année_fichier']; ?>
+                                                                        </p>
+                                                                    </td>
+                                                                    <td>
+                                                                        <p><a href='download.php?id=<?php echo $row['id_doc']; ?>&table=<?php echo $nom_table; ?>&categorie=<?php echo $categorie; ?>' target="_blank"><img width="26"
+                                                                                    height="26" src="https://img.icons8.com/metro/26/download.png"
+                                                                                    alt="download" />Voir le PDF</a></p>
+                                                                    </td>
+                                                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -1307,7 +1282,7 @@ mysqli_close($conn);
         
         <div id="container-grid">
             <div class="grid">
-                <div class="items1"><h1 class="font_montserrat font-bold">communauté</h1>   <p class="font-size15 text-shadow">Poser vos question a la communauter et nous vous aidons a repondre a vos questions</p>                           <span><a href="publication.php" class="link_hover text-noir">Communauté &#10132;</a></span></div>
+                <div class="items1"><h1 class="font_montserrat font-bold">communauté discord</h1>   <p class="font-size15 text-shadow">Poser vos question a la communauter et nous vous aidons a repondre a vos questions</p>                   <span><a href="https://discord.com/channels/1174650025482145792/1174650025482145795" class="link_hover text-noir">Communauté &#10132;</a></span></div>
                 <div class="items2"><h1 class="font_montserrat font-bold">Message Privée</h1>  <p class="font-size15 text-shadow">Discuter en priver avec des amis sur vos centre d'interet et pour l'evolution .</p>                              <span><a href="#" class="link_hover text-noir">Message &#10132;</a></span></span></div>
                 <div class="items3"><h1 class="font_montserrat font-bold">Prenez des Notes</h1> <p class="font-size15 text-shadow">Avec notre appli vous avez la possibilité de prendre des note et sauvegarder des informations des recherches</p> <span><a href="#" class="link_hover text-noir">Note &#10132;</a></span></span></div>
             </div>
@@ -1362,7 +1337,7 @@ mysqli_close($conn);
         </div>
 
         <div class="boutton_discussion" id="menudiscussion">
-            <a href="publication.php"  rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" id="message_icon"><path d="M80 776V218q0-14 13-28t27-14h519q15 0 28 13.5t13 28.5v356q0 14-13 28t-28 14H240L80 776Zm201 40q-14 0-27.5-14T240 774v-98h500V336h100q14 0 27 14t13 29v596L721 816H281Zm339-580H140v395l75-75h405V236Zm-480 0v395-395Z"/></svg></a>
+            <a href="indisponible.html"  rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" id="message_icon"><path d="M80 776V218q0-14 13-28t27-14h519q15 0 28 13.5t13 28.5v356q0 14-13 28t-28 14H240L80 776Zm201 40q-14 0-27.5-14T240 774v-98h500V336h100q14 0 27 14t13 29v596L721 816H281Zm339-580H140v395l75-75h405V236Zm-480 0v395-395Z"/></svg></a>
         </div>
         <div class="boutton_discussion" id="menuia">
             <a href="ia.php"><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 72 72" id="message_icon"><path d="M 34.544922 10.193359 C 29.873922 10.193359 25.457641 13.042922 23.431641 17.294922 L 23.431641 31.996094 L 29.75 35.886719 L 29.990234 20.664062 L 41.925781 12.580078 C 39.919781 11.055078 37.129922 10.193359 34.544922 10.193359 z M 47.501953 14.164062 C 46.670953 14.164063 45.476594 14.265875 44.433594 14.546875 L 33 22.269531 L 32.900391 28.947266 L 44.974609 20.845703 L 59.617188 29.509766 C 59.812187 28.625766 59.957031 27.388469 59.957031 26.480469 C 59.957031 19.603469 54.318953 14.164062 47.501953 14.164062 z M 20.423828 19.902344 C 14.967828 21.467344 11.356484 26.200109 11.396484 32.037109 C 11.409484 33.814109 11.878625 35.727953 12.640625 37.251953 L 28.025391 46.037109 L 34.222656 42.166016 L 20.423828 33.701172 L 20.423828 19.902344 z M 45.074219 24.394531 L 40.060547 27.804688 L 53.177734 36.107422 L 54.822266 50.949219 C 59.246266 49.048219 62.564453 44.604031 62.564453 39.457031 C 62.564453 37.703031 62.123328 35.766562 61.361328 34.101562 L 45.074219 24.394531 z M 37.271484 29.628906 L 32.818359 32.597656 L 32.798828 37.691406 L 37.130859 40.380859 L 41.744141 37.511719 L 41.603516 32.396484 L 37.271484 29.628906 z M 44.734375 34.363281 L 45.076172 50.408203 L 32.378906 57.890625 C 34.624906 59.895625 37.579141 60.953125 40.494141 60.953125 C 45.492141 60.953125 50.169609 57.850266 51.974609 53.197266 L 50.330078 37.853516 L 44.734375 34.363281 z M 41.865234 41.001953 L 28.085938 49.566406 L 15.269531 42.265625 C 15.058531 43.185625 14.908203 44.425047 14.908203 45.373047 C 14.908203 51.924047 20.263266 57.529453 26.822266 57.689453 L 42.025391 48.644531 L 41.865234 41.001953 z"/></svg></a>    
@@ -1373,19 +1348,18 @@ mysqli_close($conn);
     </div>
 
     <footer id="footer">
-    <svg id="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
-    <div>
-        <img class="logo logo_footer" src="ASSETS/chart-graphique/ezeetest-website-favicon-white.png" alt="logo" srcset="">
+    <div class="footer-container">
+        <div><h1 class="font_montserrat">LKAV Society</h1>
+        <a href="about.html#contact" rel="noopener noreferrer"><p class="link-footer"> contacter Equipe <span>&#10132;</span></p></a>
+        </div>
+
+        <div class="contact-info"><h1 class="font_montserrat">Contact</h1>
+        <a href="mailto:YOUR_EMAIL@example.com" target="_blank" rel="noopener noreferrer">
+            <img width="40" height="40" src="https://img.icons8.com/ios-filled/50/FFFFFF/message-squared.png" alt="message-squared"/>
+        </a></div>
     </div>
-    <div>
-        <p><span class="text">LKAV Technologie</span><a href="about.html" rel="noopener noreferrer">contacter Equipe</a><br></p>
-        <p><span>🇧🇯 Bj: Atlantique|Atrokpocodji</span><span>Email: YOUR_EMAIL@example.com</span></p>
-    </div>
-    <div>
-        <ul>
-            <li>&#169; aaa</li>
-        </ul>
-    </div>
+    <p class="copyright">copyright © 2021 - Tous droits réservés</p>
+    
     <div class="btn_up">
     <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="M480 884q-5 0-10.6-2.045-5.6-2.046-10.4-6.955L181 597q-9-8.8-9-20.9 0-12.1 9-21.1 9-9 21-9t21 9l227 227V286q0-13.077 8.675-21.538 8.676-8.462 21.5-8.462 12.825 0 21.325 8.625T510 286v496l227-227q9-9 21-9t21 8.842q9 8.842 9 21T779 597L501 875q-5 5-10.091 7-5.091 2-10.909 2Z"/></svg>
     </div>

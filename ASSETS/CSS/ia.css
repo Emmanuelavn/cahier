@@ -1,3 +1,5 @@
+@import url('./root.css');
+
 /*importation font familly*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
@@ -31,6 +33,7 @@
     --svg-group-width: 660px;
     --svg-group-height: 479px;
 }
+
 
 * {
     margin: 0;
@@ -71,85 +74,6 @@ body {
 }
 
 /* navbar et lien */
-.navbar {
-  background-color: var(--main-color);
-    color: var(--color-white);
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.navbar h1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.img-profil {
-    border-radius: 10px;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-}
-
-.link_container {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-    gap: 2rem;
-    padding: 0%;
-}
-
-.link {
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-    padding: 0 10px;
-}
-
-.link a { 
-    display: block;
-    overflow: hidden;
-    cursor: pointer;
-    font-size: var(--size-link);
-    color: var(--color-white);
-    transition: all 0.5s ease-out;
-    letter-spacing: 0.5px;
-}
-
-/*effet hover des liens de la navbar*/
-
-.link_container .link a::after {
-    content: "";
-    position: absolute;
-    background-color: var(--color-white);
-    height: 9px;
-    top:0px;
-    width: 0;
-    left: 0%;
-    bottom: 0px;
-    transition: all 0.3s;
-}
-.link_container .link a:focus:after {
-    left: 1;
-    width: 100%;
-}
-
-.link_container .link a:hover {
-    display: block;
-    color:#f0f8ffb0;
-}
- 
-.text-logo{
-    font-size: var(--logo-fontFam);
-    padding-left: 10px;
-    font-size: 1.5em;
-}
-.logo {
-    height: var(--size-logo);
-    width: auto;
-}
 
 #app {
   width: 100%;

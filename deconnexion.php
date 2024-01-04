@@ -1,5 +1,13 @@
 <?php
 session_start();
+// Démarrer la session
+
+// Vérifier si l'utilisateur est authentifié
+if (!isset($_SESSION['email_or_username'])) {
+    // Si l'utilisateur n'est pas authentifié, rediriger vers la page de connexion
+    header("Location: index.php");
+    exit();
+}
 
 if (isset($_POST['deconnexion'])) {
     // L'utilisateur a confirmé la déconnexion
@@ -73,6 +81,8 @@ li {
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: var(--main-FontFam);
 }
 /*class a utilliser*/
@@ -289,16 +299,6 @@ body {
     width: var(--welcom-size);
 }
 
-/*information utillisateur*/
-.container {
-    max-width: 100%;
-    margin: 200px auto;
-    padding: 50px;
-    background-color: var(--background-color);
-    border: 1px solid #ddd;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.433);
-    border-radius: 25px;
-}
 
 .infosUser {
     list-style: none;
@@ -501,17 +501,15 @@ a:hover {
     </style>
 </head>
 
-<body>
+<body id="body">
     <nav>
         <?php include "DATA/include/navbar.php"; ?>
     </nav>
-    <div class="container">
         <h2>Voulez-vous vraiment vous déconnecter ?</h2>
         <form method="post">
             <input type='submit' name='annuler' value='annuler'>
             <input type="submit" name="deconnexion" value="Déconnexion">
         </form>
-    </div>
 </body>
 
 </html>

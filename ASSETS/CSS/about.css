@@ -1,3 +1,4 @@
+@import url('./root.css');
 /*importation font familly*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
@@ -14,8 +15,8 @@
     --Inter-FontFam: 'Inter', sans-serif;
     --size-nav-Title: 20px;
     --input-text-Fontsize: 1em;
-    --size-Title: 2.5em;
-    --size-text: 1.1em;
+    --size-Title: 3em;
+    --size-text: 1.5em;
     --size-link: 1.2em;
     --size-logo: 2em;
     --size-text-logo:1em;
@@ -49,9 +50,10 @@ li {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     font-family: var(--main-FontFam);
+}
+p{
+    font-size: 2em;
 }
 /*class a utilliser*/
 .text_center{
@@ -78,6 +80,13 @@ body {
 }
 .gap-x-3{
     gap: 1em;
+}
+.text-small{
+    letter-spacing: 2px;
+    font-size: 1em;
+}
+.text{
+    font-size: var(--size-text);
 }
 .title {
     font-weight: bold;
@@ -174,14 +183,11 @@ body {
 }
 /* navbar et lien */
 .navbar {
-    top: 0;
-    left: 0;
-    position: fixed;
     background-color: #ffffffc5;
     backdrop-filter: blur(7px);
     color: var(--third-color);
     height: 60px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -249,7 +255,7 @@ body {
     right: 0;
     width: 60%;
     height: 4px;
-    background-color: var(--color-white);
+    background-color: var(--main-color);
 
     transition: background-color 0.5s ease-in-out;
 }
@@ -258,10 +264,9 @@ body {
 .menu-burgeur span:nth-child(3) {
     position: absolute;
     content: "";
-
     width: 100%;
     height: 4px;
-    background-color: var(--color-white);
+    background-color: var(--main-color);
     transition: transform 0.5s ease-in-out;
 }
 
@@ -307,6 +312,7 @@ body {
     padding: 0%;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-around;
@@ -315,32 +321,160 @@ body {
 
 /*footer*/
 #footer {
-    padding-top: 200px;
-    position: relative;
+    padding-top: 5%;
+    padding-bottom: 1%;
+    font-weight: 200;
+    text-align: center;
     background-color: #0f3054;
     width: 100%;
-    height: 300px;
+    height: 70vh;
     color: var(--color-white);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items:flex-start;
+    align-items:center;
+    justify-content: space-between;
+}
+#contact-dev{
+    height:70%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5em;
     justify-content: space-around;
+    margin: auto;
 }
-#wave{
-    top: -100px;
-    transform: rotate(180deg);
-    position: absolute;
-}
-#footer p {
-    padding: 10px;
+.LKAV-infos{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    align-self: center;
+    justify-content: space-evenly;
+    gap: 2em;
 }
 
+.contact-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 1.5elm;
+    font-weight: bold;
+    
+}
+.name{
+    line-height: 2em;
+    font-size: 1.5em;
+}
 .logo_footer {
     font-size: 2em;
 }
+/* Vos styles existants */
+
+@media screen and (max-width: 960px) {
+    /* Ajoutez des styles spécifiques pour les écrans de largeur maximale de 960px */
+    :root {
+        --logo-fontFam:'ezeetest-exo-2-bold' sans-serif;
+        --main-FontFam: 'Roboto', sans-serif;
+        --Montserrat-FontFam: 'Montserrat', sans-serif;
+        --Inter-FontFam: 'Inter', sans-serif;
+        --size-nav-Title: 20px;
+        --input-text-Fontsize: 1em;
+        --size-Title: 3em;
+        --size-text: 1.5em;
+        --size-link: 1.2em;
+        --size-logo: 2em;
+        --size-text-logo:1em;
+        --size-btn: 1.2em;
+        --size-nomUser:2em;
+        --size-imgProfile:3rem;
+        --welcom-size: 3.5em;
+        --main-color: #0f3054;
+        --second-color: #89939E;
+        --third-color: #000000;
+        --background-color: #FFFFFF;
+        --text-color: #222;
+        --form-color: #f0f8ff;
+        --color-white: #ffffff;
+        --svg-group-width: 100%;
+        --svg-group-height: auto;
+    }
+
+    .navbar h1 span{
+        display: none;
+    }
+    .mobile-afichage{
+        display: block;
+    }
+
+    .link_container{
+        color: var(--color-white);
+        opacity: 0;
+        background-color: var(--color-white);
+        left: -1000;
+        top: 0px;
+        width: 100%;
+        height: 100vh;
+        border-bottom-left-radius: 50px;
+        border-bottom-right-radius: 50px;
+        padding:20px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 5em;
+        margin:auto ;
+        position: absolute;
+        transform: translateX(-1000px);
+        transition: all 0.9s ease-in-out;
+    }
+    .link_container a{
+        color: var(--third-color);
+        text-decoration: solid;
+        text-transform: uppercase;
+    }
+    .overflowHidden{
+        overflow: hidden;
+    }
+    .link_container.burgeuractive{
+        opacity: 1;
+        left: 0;
+        transform:inherit;
+        display: flex;
+        overflow: hidden !important;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    .header_container {
+        gap: 5em;
+    }
+    .container{
+        padding: 0% !important;
+        margin: 0px !important;
+        display: flex;
+        flex-direction: column;
+    }
+    #footer{
+        flex-wrap: wrap;
+    }
+    .logo_footer{
+        display: none;
+    }
+    .affichage-about{
+        padding: auto !important;
+        height: auto;
+    }
+    .profile-header{
+        display: none;
+    }
+    /* Ajoutez d'autres styles responsives au besoin */
+}
+
+/* Ajoutez d'autres media queries au besoin */

@@ -74,41 +74,23 @@ $conn->close();
 
 ?>
 
-<?php
-// Assurez-vous d'avoir correctement configuré la connexion à la base de données.
-include "DATA/include/config_BD.php";
-
-// Sélectionnez les informations de la table USERS_infosup pour l'utilisateur actuel
-$sql = "SELECT about, img_profile FROM USERS_infosup WHERE id_user = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, "i", $id_user);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $about, $img_profile);
-
-// Récupérez les valeurs
-mysqli_stmt_fetch($stmt);
-
-// Fermez la requête
-mysqli_stmt_close($stmt);
-
-// Fermez la connexion à la base de données
-mysqli_close($conn);
-?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil</title>
   <link rel="stylesheet" href="ASSETS/CSS/user.css">
+  <link rel="icon" href="ASSETS/chart-graphique/ezeetest-website-favicon-color.png">
+  <title>Profil || Ezeetest</title>
 </head>
 
 <body id="body">
     <nav class="navbar">
       <h1><img class="logo" src="ASSETS/chart-graphique/ezeetest-website-favicon-color.png" alt="logo-Ezeetest"
-          srcset=""><span class="text-logo">Profil</span></h1>
+          srcset=""><span>Profil</span></h1>
       <ul class="link_container">
+        <img class="logo mobile-afichage" src="ASSETS/chart-graphique/ezeetest-website-favicon-color.png" alt="" srcset="">
         <li class="link"><a href="deconnexion.php">deconnexion</a></li>
         <li class="link"><a href="about.html">a propos</a></li>
         <li class="link"><a href="acceuil.php">acceuil</a></li>
@@ -122,16 +104,13 @@ mysqli_close($conn);
     </nav>
     <div class="affichage-about bg-main">
         <div class="column flex items-center gap-x-3">
-          <img class="img_rond size100" src="<?php echo $cheminImageProfil; ?>" alt="image de profil" srcset="">
+          <img class="profile-header img_rond size100" src="<?php echo $cheminImageProfil; ?>" alt="image de profil" srcset="">
           <p class="nomUser font-bold">
             <?php echo $nom_utilisateur_actuel, "  ", $prenom_utilisateur_actuel; ?>
           </p>
         </div>
         <br>
-        <div class="aboutContainer">
-          <p><?php echo "A propos: ".$about." " ;?></p>
-        </div>
-        <button class="btnchange"><a href="#changeprofile">Change</a></button>
+        
     </div>
   <div class="container">
     <div class="affichage">
@@ -167,53 +146,7 @@ mysqli_close($conn);
       
      </div>
     <h2>Modifier les informations</h2>
-    <form action="" method="post">
-      <div class="col-span-full">
-        <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
-        <div class="mt-2">
-          <textarea id="about" name="about" rows="3"required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
-            <br>
-            
-            <br>
-            <input type="submit" name="save" value="save">
-          </div>
-          <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
-      </div>
-    </form>
-<?php
-if (isset($_POST['save'])) {
-    // Assurez-vous d'avoir correctement configuré la connexion à la base de données.
-    include "DATA/include/config_BD.php";
-
-    // Récupérez les données soumises dans le formulaire
-    $about = $_POST['about'];
-    $img_profile = $cheminImageProfil;
-    // Récupérez l'ID de l'utilisateur à partir de la variable $id_user
-    // Remplacez par l'ID de l'utilisateur approprié
-
-    // Préparez la requête SQL d'insertion
-    $query = "INSERT INTO USERS_infosup (id_user, about, img_profile) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-
-    // Liez les valeurs aux paramètres
-    mysqli_stmt_bind_param($stmt, "iss", $id_user, $about, $img_profile);
-
-    // Exécutez la requête
-    if (mysqli_stmt_execute($stmt)) {
-        // Les informations ont été enregistrées avec succès
-        echo "Informations enregistrées avec succès.";
-    } else {
-        echo "Erreur lors de l'enregistrement des informations : " . mysqli_error($conn);
-    }
-
-    // Fermez la requête
-    mysqli_stmt_close($stmt);
-
-    // Fermez la connexion à la base de données
-    mysqli_close($conn);
-}
-?>
+    
     <form method="post" action="">
 
 

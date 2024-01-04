@@ -1,3 +1,5 @@
+@import url('./root.css');
+
 /*importation font familly*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
@@ -234,7 +236,7 @@ body {
     right: 0;
     width: 60%;
     height: 4px;
-    background-color: var(--color-white);
+    background-color: var(--main-color);
 
     transition: background-color 0.5s ease-in-out;
 }
@@ -246,7 +248,7 @@ body {
 
     width: 100%;
     height: 4px;
-    background-color: var(--color-white);
+    background-color: var(--main-color);
     transition: transform 0.5s ease-in-out;
 }
 
@@ -273,7 +275,8 @@ body {
 
 /*information utillisateur*/
 .container {
-    padding:100px;  
+    padding: 50px;
+    
     background-color: var(--background-color);
     border-radius: 10px;
 }
@@ -443,40 +446,52 @@ a:hover {
     .body{
         position: relative;
     }
+    .navbar h1 span{
+        display: none;
+    }
     .mobile-afichage{
         display: block;
     }
     .link_container{
+        color: var(--color-white);
         opacity: 0;
-        display: none;
-        background-color: #0f3054;
+        background-color: var(--color-white);
         left: -1000;
-        top: 90px;
+        top: 0px;
         width: 100%;
+        height: 100vh;
         border-bottom-left-radius: 50px;
         border-bottom-right-radius: 50px;
         padding:20px 0px;
-        height: auto;
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
+        gap: 5em;
         margin:auto ;
         position: absolute;
         transform: translateX(-1000px);
         transition: all 0.9s ease-in-out;
+    }
+    .link_container a{
+        color: var(--third-color);
+        text-decoration: solid;
+        text-transform: uppercase;
     }
     .link_container.burgeuractive{
         opacity: 1;
         left: 0;
         transform:inherit;
         display: flex;
+        overflow: hidden;
     }
     #header{
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 1% 9%;
+        height: 50vh;
     }
     #header_container {
         top: 200;
@@ -487,12 +502,22 @@ a:hover {
         text-align: center;
     }
     .container{
-        margin-top: 100px;
+        padding: 0% !important;
+        margin: 0px !important;
+        display: flex;
+        flex-direction: column;
     }
     #footer{
         flex-wrap: wrap;
     }
     .logo_footer{
+        display: none;
+    }
+    .affichage-about{
+        padding: auto !important;
+        height: auto;
+    }
+    .profile-header{
         display: none;
     }
 }

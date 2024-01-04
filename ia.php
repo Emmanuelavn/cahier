@@ -49,15 +49,9 @@
 </head>
 
 <body>
-  <nav class="navbar">
-            <h1><img class="logo" src="ASSETS/chart-graphique/ezeetest-low-resolution-logo-white-on-transparent-background.png" alt="logo-Ezeetest" srcset=""></h1>
-            <ul class="link_container">
-                <li class="link"><a href="user.php"><img class="img_rond img-profil" src="<?php echo $cheminImageProfil; ?>" alt="image de profil" srcset=""></a></li>
-                <li class="link"><a href="deconnexion.php">deconnexion</a></li>
-                <li class="link"><a href="about.html">a propos</a></li>
-                <li class="link"><a href="acceuil.php">Acceuil</a></li>
-            </ul>
-    </nav>
+  <nav>
+    <?php include "DATA/include/navbar.php";?>
+  </nav>
   <div id="app">
     <div id="sidebar">
       <h3>Contexte</h3>

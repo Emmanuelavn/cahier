@@ -15,7 +15,7 @@ $selectedLicense = $_GET['license'];
 $selectedLicense = $conn->real_escape_string($selectedLicense);
 
 // Requête SQL pour rechercher dans la base de données en fonction de la licence
-$sql = "SELECT * FROM $selectedLicense WHERE  (nom_ue LIKE '%$searchTerm%' OR nom_ec LIKE '%$searchTerm%' OR nom_fichier LIKE '%$searchTerm%' OR description_fichier LIKE '%$searchTerm%')";
+$sql = "SELECT * FROM $selectedLicense WHERE  (nom_ue LIKE '%$searchTerm%' OR nom_ec LIKE '%$searchTerm%' OR nom_fichier LIKE '%$searchTerm%' OR description_fichier LIKE '%$searchTerm%' OR année_fichier LIKE '%$searchTerm%' OR filliere LIKE '%$searchTerm%') OR chemin_fichier LIKE '%$searchTerm%'";
 
 // Exécutez la requête SQL
 $result = $conn->query($sql);

@@ -30,7 +30,7 @@ if (!isset($_SESSION['email_or_username'])) {
       die("Informations de l'utilisateur non trouvées.");
   }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST["publier"])) {
     // Récupérer les données du formulaire
     $postText = $_POST["post-text"];
 
@@ -39,8 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Enregistrement de la publication dans la base de données
     try {
         // Inclure le fichier de connexion à la base de données
-        include("DATA/include/config_BD.php"); // Assurez-vous que le nom du fichier correspond à votre configuration
-
+        include("DATA/include/config_BD.php"); 
+        
         // Préparez la requête SQL d'insertion
         $query = "INSERT INTO POSTS (id_user, post_text) VALUES (?, ?)";
         $stmt = mysqli_prepare($conn, $query);
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 if (isset($_POST["Reponse"])) {
     // Récupérer les données du formulaire
-    $post_id = $_POST["post_id"];
+    $id_post = $_POST["post_id"];
     $comment_text = $_POST["comment_text"];
 
     // Validation des données
@@ -86,13 +86,13 @@ if (isset($_POST["Reponse"])) {
         include("DATA/include/config_BD.php");
 
         // Préparez la requête SQL d'insertion du commentaire
-        $query = "INSERT INTO COMMENTS (id_user, post_id, comment_text) VALUES (?, ?, ?)";
+        $query = "INSERT INTO COMMENTS (id_user, id_post, comment_text) VALUES (?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
 
         // Remplacez $user_id par l'ID de l'utilisateur actuel (peut provenir de la session)
         // Par exemple, remplacez cela par la valeur correcte de l'ID de l'utilisateur
 
-        mysqli_stmt_bind_param($stmt, "iis", $id_user, $post_id, $comment_text);
+        mysqli_stmt_bind_param($stmt, "iis", $id_user, $id_post, $comment_text);
 
         // Exécutez la requête
         if (mysqli_stmt_execute($stmt)) {

@@ -1,3 +1,5 @@
+@import url('./root.css');
+
 /*importation font familly*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
@@ -58,7 +60,14 @@
 a{
     padding: 10px;
 }
-
+.affmp{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 17vw;
+}
 html, body {
     font-family: var(--main-FontFam);
     width: 100vw;
