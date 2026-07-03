@@ -106,8 +106,7 @@
 
     function callOpenAI($message)
     {
-        // Remplacez ceci par votre propre clé API GPT-3.5  YOUR_OPENAI_API_KEY
-        $openai_token = "YOUR_OPENAI_API_KEY";
+        $openai_token = getenv("OPENAI_API_KEY") ?: "YOUR_OPENAI_API_KEY";
 
         $data = array(
             "model" => "gpt-3.5-turbo",

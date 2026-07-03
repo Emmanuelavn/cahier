@@ -1,5 +1,4 @@
-//YOUR_OPENAI_API_KEY
-const API_KEY = "YOUR_OPENAI_API_KEY";
+const API_KEY = process.env.OPENAI_API_KEY || "YOUR_OPENAI_API_KEY";
 const MODEL = "gpt-3.5-turbo";
 const API_URL = "https://api.openai.com/v1/chat/completions";
 
