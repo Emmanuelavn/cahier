@@ -69,7 +69,7 @@ if (isset($_POST["ok"])) {
                     $mail->Host = 'smtp.gmail.com'; // Remplacez par le serveur SMTP de votre fournisseur de messagerie
                     $mail->SMTPAuth = true;
                     $mail->Username = 'YOUR_EMAIL@example.com'; // Remplacez par votre adresse email
-                    $mail->Password = 'YOUR_MAIL_APP_PASSWORD'; // Remplacez par votre mot de passe
+                    $mail->Password = getenv('MAIL_PASSWORD') ?: 'YOUR_MAIL_APP_PASSWORD'; // Remplacez par votre mot de passe
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
